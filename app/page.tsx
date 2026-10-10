@@ -25,6 +25,7 @@ const ELLA_FRAME_COUNT = 300;
 const BADULLA_FRAME_COUNT = 300;
 const YALA_FRAME_COUNT = 300;
 const ARUGAMBAY_FRAME_COUNT = 300;
+const GALLE_FRAME_COUNT = 300;
 const EXISTING_JOURNEY_END = 0.716;
 
 const heroFrameSource = (index: number) =>
@@ -59,6 +60,8 @@ const yalaFrameSource = (index: number) =>
   `/yala-frames/yala-${String(index + 1).padStart(3, "0")}.webp`;
 const arugambayFrameSource = (index: number) =>
   `/arugambay-frames/arugambay-${String(index + 1).padStart(3, "0")}.webp`;
+const galleFrameSource = (index: number) =>
+  `/galle-frames/galle-${String(index + 1).padStart(3, "0")}.webp`;
 
 const destinations = [
   {
@@ -799,6 +802,24 @@ const journeyChapters: ChapterData[] = [
       subtitle: "Surfing · Lagoon safaris",
       description:
         "Ride world-class point breaks by day and unwind under palms as the sun drops into the Indian Ocean.",
+    },
+  },
+  {
+    id: "galle",
+    number: "17",
+    eyebrow: "South coast",
+    title: "Galle",
+    lede: "Four centuries of stories — ramparts, lighthouses and colonial streets by the sea.",
+    frameCount: GALLE_FRAME_COUNT,
+    frameSource: galleFrameSource,
+    card: {
+      image: "/destinations/galle-lighthouse.webp",
+      alt: "Galle Fort lighthouse at golden hour",
+      category: "Cultural",
+      title: "Galle Fort",
+      subtitle: "Lighthouse · Rampart walks",
+      description:
+        "Walk the old Dutch ramparts at sunset, past the lighthouse and into cobbled streets full of cafes and craft shops.",
     },
   },
 ];
