@@ -23,6 +23,7 @@ const MATALE_FRAME_COUNT = 300;
 const NUWARAELIYA_FRAME_COUNT = 300;
 const ELLA_FRAME_COUNT = 300;
 const BADULLA_FRAME_COUNT = 300;
+const YALA_FRAME_COUNT = 300;
 const EXISTING_JOURNEY_END = 0.716;
 
 const heroFrameSource = (index: number) =>
@@ -53,6 +54,8 @@ const ellaFrameSource = (index: number) =>
   `/ella-frames/ella-${String(index + 1).padStart(3, "0")}.webp`;
 const badullaFrameSource = (index: number) =>
   `/badulla-frames/badulla-${String(index + 1).padStart(3, "0")}.webp`;
+const yalaFrameSource = (index: number) =>
+  `/yala-frames/yala-${String(index + 1).padStart(3, "0")}.webp`;
 
 const destinations = [
   {
@@ -757,6 +760,24 @@ const journeyChapters: ChapterData[] = [
       subtitle: "Dunhinda Falls · Eco retreats",
       description:
         "Discover Dunhinda Falls, stay in lodges wrapped by tea gardens, and feel the unhurried rhythm of the highlands.",
+    },
+  },
+  {
+    id: "yala",
+    number: "15",
+    eyebrow: "Wild south",
+    title: "Yala",
+    lede: "Down to the wild south — leopards, elephants and untamed jungle.",
+    frameCount: YALA_FRAME_COUNT,
+    frameSource: yalaFrameSource,
+    card: {
+      image: "/destinations/yala-leopard.webp",
+      alt: "Leopard on a tree branch in Yala",
+      category: "Wildlife",
+      title: "Yala National Park",
+      subtitle: "Leopard safaris · Bundala wetlands",
+      description:
+        "Track leopards with expert rangers at dawn in Sri Lanka's most famous wilderness, from Tissamaharama.",
     },
   },
 ];
