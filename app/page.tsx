@@ -29,6 +29,7 @@ const GALLE_FRAME_COUNT = 300;
 const BENTOTA_FRAME_COUNT = 300;
 const MIRISSA_FRAME_COUNT = 300;
 const HIRIKETIYA_FRAME_COUNT = 300;
+const HUMMANAYA_FRAME_COUNT = 300;
 const EXISTING_JOURNEY_END = 0.716;
 
 const heroFrameSource = (index: number) =>
@@ -71,6 +72,8 @@ const mirissaFrameSource = (index: number) =>
   `/mirissa-frames/mirissa-${String(index + 1).padStart(3, "0")}.webp`;
 const hiriketiyaFrameSource = (index: number) =>
   `/hiriketiya-frames/hiriketiya-${String(index + 1).padStart(3, "0")}.webp`;
+const hummanayaFrameSource = (index: number) =>
+  `/hummanaya-frames/hummanaya-${String(index + 1).padStart(3, "0")}.webp`;
 
 const destinations = [
   {
@@ -883,6 +886,24 @@ const journeyChapters: ChapterData[] = [
       subtitle: "Surfing · Beach cafes",
       description:
         "Paddle out in a sheltered bay made for longboards, then refuel at the beach cafes under the palms.",
+    },
+  },
+  {
+    id: "hummanaya",
+    number: "21",
+    eyebrow: "South coast",
+    title: "Hummanaya",
+    lede: "The ocean breathes — a natural blowhole roaring between ancient rocks.",
+    frameCount: HUMMANAYA_FRAME_COUNT,
+    frameSource: hummanayaFrameSource,
+    card: {
+      image: "/destinations/hummanaya-blowhole.webp",
+      alt: "Hummanaya blowhole erupting between coastal rocks",
+      category: "Adventure",
+      title: "Hummanaya Blowhole",
+      subtitle: "Natural wonder · Coastal cliffs",
+      description:
+        "Feel the ground tremble as the sea erupts skyward through the rock — the island's most dramatic natural show.",
     },
   },
 ];
