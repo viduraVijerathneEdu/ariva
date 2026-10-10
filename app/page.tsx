@@ -26,6 +26,7 @@ const BADULLA_FRAME_COUNT = 300;
 const YALA_FRAME_COUNT = 300;
 const ARUGAMBAY_FRAME_COUNT = 300;
 const GALLE_FRAME_COUNT = 300;
+const BENTOTA_FRAME_COUNT = 300;
 const EXISTING_JOURNEY_END = 0.716;
 
 const heroFrameSource = (index: number) =>
@@ -62,6 +63,8 @@ const arugambayFrameSource = (index: number) =>
   `/arugambay-frames/arugambay-${String(index + 1).padStart(3, "0")}.webp`;
 const galleFrameSource = (index: number) =>
   `/galle-frames/galle-${String(index + 1).padStart(3, "0")}.webp`;
+const bentotaFrameSource = (index: number) =>
+  `/bentota-frames/bentota-${String(index + 1).padStart(3, "0")}.webp`;
 
 const destinations = [
   {
@@ -820,6 +823,24 @@ const journeyChapters: ChapterData[] = [
       subtitle: "Lighthouse · Rampart walks",
       description:
         "Walk the old Dutch ramparts at sunset, past the lighthouse and into cobbled streets full of cafes and craft shops.",
+    },
+  },
+  {
+    id: "bentota",
+    number: "18",
+    eyebrow: "Southwest coast",
+    title: "Bentota & Beruwala",
+    lede: "Where the river meets the sea — resorts, water sports and golden beaches.",
+    frameCount: BENTOTA_FRAME_COUNT,
+    frameSource: bentotaFrameSource,
+    card: {
+      image: "/destinations/bentota-resort.webp",
+      alt: "Beach resort on a rocky headland in Bentota",
+      category: "Adventure",
+      title: "Bentota",
+      subtitle: "Water sports · River safaris",
+      description:
+        "Jet-ski, windsurf or cruise the Bentota River between mangroves — the southwest coast's playground.",
     },
   },
 ];
