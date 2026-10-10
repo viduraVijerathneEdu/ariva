@@ -37,6 +37,7 @@ const HIKKADUWA_FRAME_COUNT = 300;
 const MAHIYANGANA_FRAME_COUNT = 300;
 const RATNAPURA_FRAME_COUNT = 300;
 const SINHARAJA_FRAME_COUNT = 300;
+const JAFFNA_FRAME_COUNT = 300;
 const EXISTING_JOURNEY_END = 0.716;
 
 const heroFrameSource = (index: number) =>
@@ -95,6 +96,8 @@ const ratnapuraFrameSource = (index: number) =>
   `/ratnapura-frames/ratnapura-${String(index + 1).padStart(3, "0")}.webp`;
 const sinharajaFrameSource = (index: number) =>
   `/sinharaja-frames/sinharaja-${String(index + 1).padStart(3, "0")}.webp`;
+const jaffnaFrameSource = (index: number) =>
+  `/jaffna-frames/jaffna-${String(index + 1).padStart(3, "0")}.webp`;
 
 const destinations = [
   {
@@ -1051,6 +1054,24 @@ const journeyChapters: ChapterData[] = [
       subtitle: "Guided treks · Endemic birds",
       description:
         "Trek with expert naturalists through ancient rainforest, home to birds and wildlife found nowhere else on Earth.",
+    },
+  },
+  {
+    id: "jaffna",
+    number: "29",
+    eyebrow: "Northern peninsula",
+    title: "Jaffna",
+    lede: "A different island — temples, lagoons and Tamil culture at the northern tip.",
+    frameCount: JAFFNA_FRAME_COUNT,
+    frameSource: jaffnaFrameSource,
+    card: {
+      image: "/destinations/jaffna-temple.webp",
+      alt: "Hindu temple on turquoise waters in Jaffna",
+      category: "Cultural",
+      title: "Jaffna",
+      subtitle: "Nallur Temple · Islands",
+      description:
+        "Explore vibrant Hindu temples, taste the north's famous cuisine, and boat to the islands off the peninsula.",
     },
   },
 ];
