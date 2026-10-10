@@ -28,6 +28,7 @@ const ARUGAMBAY_FRAME_COUNT = 300;
 const GALLE_FRAME_COUNT = 300;
 const BENTOTA_FRAME_COUNT = 300;
 const MIRISSA_FRAME_COUNT = 300;
+const HIRIKETIYA_FRAME_COUNT = 300;
 const EXISTING_JOURNEY_END = 0.716;
 
 const heroFrameSource = (index: number) =>
@@ -68,6 +69,8 @@ const bentotaFrameSource = (index: number) =>
   `/bentota-frames/bentota-${String(index + 1).padStart(3, "0")}.webp`;
 const mirissaFrameSource = (index: number) =>
   `/mirissa-frames/mirissa-${String(index + 1).padStart(3, "0")}.webp`;
+const hiriketiyaFrameSource = (index: number) =>
+  `/hiriketiya-frames/hiriketiya-${String(index + 1).padStart(3, "0")}.webp`;
 
 const destinations = [
   {
@@ -862,6 +865,24 @@ const journeyChapters: ChapterData[] = [
       subtitle: "Whale watching · Snorkeling",
       description:
         "Sail out to meet blue whales, snorkel with turtles, and watch sunset from Coconut Tree Hill.",
+    },
+  },
+  {
+    id: "hiriketiya",
+    number: "20",
+    eyebrow: "South coast",
+    title: "Hiriketiya",
+    lede: "A hidden horseshoe bay — surf, calm water and jungle on all sides.",
+    frameCount: HIRIKETIYA_FRAME_COUNT,
+    frameSource: hiriketiyaFrameSource,
+    card: {
+      image: "/destinations/hiriketiya-island.webp",
+      alt: "Aerial view of Hiriketiya bay and island",
+      category: "Adventure",
+      title: "Hiriketiya",
+      subtitle: "Surfing · Beach cafes",
+      description:
+        "Paddle out in a sheltered bay made for longboards, then refuel at the beach cafes under the palms.",
     },
   },
 ];
