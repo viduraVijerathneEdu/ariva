@@ -35,6 +35,7 @@ const WELIGAMA_FRAME_COUNT = 300;
 const TANGALLE_FRAME_COUNT = 300;
 const HIKKADUWA_FRAME_COUNT = 300;
 const MAHIYANGANA_FRAME_COUNT = 300;
+const RATNAPURA_FRAME_COUNT = 300;
 const EXISTING_JOURNEY_END = 0.716;
 
 const heroFrameSource = (index: number) =>
@@ -89,6 +90,8 @@ const hikkaduwaFrameSource = (index: number) =>
   `/hikkaduwa-frames/hikkaduwa-${String(index + 1).padStart(3, "0")}.webp`;
 const mahiyanganaFrameSource = (index: number) =>
   `/mahiyangana-frames/mahiyangana-${String(index + 1).padStart(3, "0")}.webp`;
+const ratnapuraFrameSource = (index: number) =>
+  `/ratnapura-frames/ratnapura-${String(index + 1).padStart(3, "0")}.webp`;
 
 const destinations = [
   {
@@ -1009,6 +1012,24 @@ const journeyChapters: ChapterData[] = [
       subtitle: "Sacred stupa · Vedda village",
       description:
         "Stand before the towering Buddha and visit Dambana, home of the indigenous Vedda community.",
+    },
+  },
+  {
+    id: "ratnapura",
+    number: "27",
+    eyebrow: "Gem country",
+    title: "Ratnapura",
+    lede: "The city of gems — rivers, rainforest and treasures beneath the soil.",
+    frameCount: RATNAPURA_FRAME_COUNT,
+    frameSource: ratnapuraFrameSource,
+    card: {
+      image: "/destinations/ratnapura-lake.webp",
+      alt: "Mountain lake near Ratnapura at dawn",
+      category: "Cultural",
+      title: "Ratnapura",
+      subtitle: "Gem mines · Samanalawewa",
+      description:
+        "Tour working gem mines, visit gem museums, and boat across still mountain lakes at dawn.",
     },
   },
 ];
