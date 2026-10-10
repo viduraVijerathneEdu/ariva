@@ -13,6 +13,16 @@ const HERO_FRAME_COUNT = 300;
 const NEGOMBO_FRAME_COUNT = 240;
 const KITULGALA_FRAME_COUNT = 240;
 const YAPAHUWA_FRAME_COUNT = 240;
+const DAMBULLA_FRAME_COUNT = 300;
+const ANURADHAPURA_FRAME_COUNT = 300;
+const POLONNARUWA_FRAME_COUNT = 300;
+const TRINCOMALEE_FRAME_COUNT = 300;
+const KALPITIYA_FRAME_COUNT = 300;
+const KANDY_FRAME_COUNT = 300;
+const MATALE_FRAME_COUNT = 300;
+const NUWARAELIYA_FRAME_COUNT = 300;
+const ELLA_FRAME_COUNT = 300;
+const BADULLA_FRAME_COUNT = 300;
 const EXISTING_JOURNEY_END = 0.716;
 
 const heroFrameSource = (index: number) =>
@@ -23,6 +33,26 @@ const kitulgalaFrameSource = (index: number) =>
   `/kitulgala-frames/kitulgala-${String(index).padStart(3, "0")}.webp`;
 const yapahuwaFrameSource = (index: number) =>
   `/yapahuwa-frames/yapahuwa-${String(index).padStart(3, "0")}.webp`;
+const dambullaFrameSource = (index: number) =>
+  `/dambulla-frames/dambulla-${String(index + 1).padStart(3, "0")}.webp`;
+const anuradhapuraFrameSource = (index: number) =>
+  `/anuradhapura-frames/anuradhapura-${String(index + 1).padStart(3, "0")}.webp`;
+const polonnaruwaFrameSource = (index: number) =>
+  `/polonnaruwa-frames/polonnaruwa-${String(index + 1).padStart(3, "0")}.webp`;
+const trincomaleeFrameSource = (index: number) =>
+  `/trincomalee-frames/trincomalee-${String(index + 1).padStart(3, "0")}.webp`;
+const kalpitiyaFrameSource = (index: number) =>
+  `/kalpitiya-frames/kalpitiya-${String(index + 1).padStart(3, "0")}.webp`;
+const kandyFrameSource = (index: number) =>
+  `/kandy-frames/kandy-${String(index + 1).padStart(3, "0")}.webp`;
+const mataleFrameSource = (index: number) =>
+  `/matale-frames/matale-${String(index + 1).padStart(3, "0")}.webp`;
+const nuwaraeliyaFrameSource = (index: number) =>
+  `/nuwaraeliya-frames/nuwaraeliya-${String(index + 1).padStart(3, "0")}.webp`;
+const ellaFrameSource = (index: number) =>
+  `/ella-frames/ella-${String(index + 1).padStart(3, "0")}.webp`;
+const badullaFrameSource = (index: number) =>
+  `/badulla-frames/badulla-${String(index + 1).padStart(3, "0")}.webp`;
 
 const destinations = [
   {
@@ -474,6 +504,262 @@ function JourneySequence({ isVisible, onFirstFrameReady }: HeroProps) {
     </section>
   );
 }
+
+type ChapterCard = {
+  image: string;
+  alt: string;
+  category: string;
+  title: string;
+  subtitle: string;
+  description: string;
+};
+
+type ChapterData = {
+  id: string;
+  number: string;
+  eyebrow: string;
+  title: string;
+  lede: string;
+  frameCount: number;
+  frameSource: (index: number) => string;
+  card: ChapterCard;
+};
+
+function JourneyChapter({ chapter }: { chapter: ChapterData }) {
+  const sectionRef = useRef<HTMLElement>(null);
+  const canvasRef = useRef<HTMLCanvasElement>(null);
+
+  useImageSequence({
+    canvasRef,
+    frameCount: chapter.frameCount,
+    frameSource: chapter.frameSource,
+    progressEnd: 1,
+    progressProperty: "--chapter-progress",
+    progressStart: 0,
+    sectionRef,
+    useFullProgress: true,
+  });
+
+  return (
+    <section className="chapter" id={chapter.id} ref={sectionRef}>
+      <div className="chapter__sticky">
+        <canvas ref={canvasRef} className="chapter__canvas" />
+        <div className="chapter__shade" />
+        <header className="chapter__header">
+          <p className="chapter__eyebrow">
+            {chapter.number} · {chapter.eyebrow}
+          </p>
+          <h2>{chapter.title}</h2>
+          <p className="chapter__lede">{chapter.lede}</p>
+        </header>
+        <div className="chapter__cards">
+          <article className="destination-card chapter-card">
+            <Image
+              src={chapter.card.image}
+              alt={chapter.card.alt}
+              fill
+              sizes="(max-width: 768px) 90vw, 38rem"
+            />
+            <div className="destination-card__shade" />
+            <span>01</span>
+            <div>
+              <p>{chapter.card.category}</p>
+              <h3>{chapter.card.title}</h3>
+              <small>{chapter.card.subtitle}</small>
+              <span className="destination-description">
+                {chapter.card.description}
+              </span>
+            </div>
+          </article>
+        </div>
+        <p className="frame-rate">300 frames · 30 fps</p>
+      </div>
+    </section>
+  );
+}
+
+const journeyChapters: ChapterData[] = [
+  {
+    id: "dambulla",
+    number: "05",
+    eyebrow: "Cultural triangle",
+    title: "Dambulla",
+    lede: "The road rises into the island's ancient heart — where a rock fortress pierces the morning sky.",
+    frameCount: DAMBULLA_FRAME_COUNT,
+    frameSource: dambullaFrameSource,
+    card: {
+      image: "/destinations/dambulla-sigiriya.webp",
+      alt: "Sigiriya rock fortress at sunrise",
+      category: "Cultural",
+      title: "Sigiriya Rock Fortress",
+      subtitle: "Climb at dawn · UNESCO World Heritage",
+      description:
+        "Ascend the ancient citadel through the lion's paws to frescoed galleries and sweeping views over the cultural triangle.",
+    },
+  },
+  {
+    id: "anuradhapura",
+    number: "06",
+    eyebrow: "Ancient cities",
+    title: "Anuradhapura",
+    lede: "Two thousand years of devotion — white stupas glowing against the dusk sky.",
+    frameCount: ANURADHAPURA_FRAME_COUNT,
+    frameSource: anuradhapuraFrameSource,
+    card: {
+      image: "/destinations/anuradhapura-stupa.webp",
+      alt: "Ruwanweliseya stupa at sunset",
+      category: "Spiritual",
+      title: "Ruwanweliseya Stupa",
+      subtitle: "Sunset rituals · Sacred city",
+      description:
+        "Walk the sacred precincts at dusk as lamps are lit around the great stupa, in the island's first ancient capital.",
+    },
+  },
+  {
+    id: "polonnaruwa",
+    number: "07",
+    eyebrow: "Ancient cities",
+    title: "Polonnaruwa",
+    lede: "Stone temples and silent Buddhas — the medieval capital frozen in golden light.",
+    frameCount: POLONNARUWA_FRAME_COUNT,
+    frameSource: polonnaruwaFrameSource,
+    card: {
+      image: "/destinations/polonnaruwa-ruins.webp",
+      alt: "Ancient stone ruins of Polonnaruwa",
+      category: "Cultural",
+      title: "Polonnaruwa Ruins",
+      subtitle: "Vatadage · Gal Vihara",
+      description:
+        "Cycle between thousand-year-old shrines, royal palaces and the serene rock-cut Buddhas of Gal Vihara.",
+    },
+  },
+  {
+    id: "trincomalee",
+    number: "08",
+    eyebrow: "East coast",
+    title: "Trincomalee",
+    lede: "The island turns east — where deep blue bays meet sacred headlands.",
+    frameCount: TRINCOMALEE_FRAME_COUNT,
+    frameSource: trincomaleeFrameSource,
+    card: {
+      image: "/destinations/trincomalee-beach.webp",
+      alt: "Turquoise bay near Trincomalee",
+      category: "Wildlife",
+      title: "Trincomalee Coast",
+      subtitle: "Snorkeling · Pigeon Island",
+      description:
+        "Swim over coral gardens, watch blue whales offshore in season, and climb to Koneswaram Temple above the sea.",
+    },
+  },
+  {
+    id: "kalpitiya",
+    number: "09",
+    eyebrow: "Northwest coast",
+    title: "Kalpitiya",
+    lede: "Wind, lagoon and open sea — the island's wild northwestern edge.",
+    frameCount: KALPITIYA_FRAME_COUNT,
+    frameSource: kalpitiyaFrameSource,
+    card: {
+      image: "/destinations/kalpitiya-sail.webp",
+      alt: "Traditional sail boat on Kalpitiya beach",
+      category: "Adventure",
+      title: "Kalpitiya Lagoon",
+      subtitle: "Kitesurfing · Dolphin watching",
+      description:
+        "Ride the wind in Asia's kitesurfing capital, then sail out at dawn to meet spinner dolphins in the open sea.",
+    },
+  },
+  {
+    id: "kandy",
+    number: "10",
+    eyebrow: "Hill capital",
+    title: "Kandy",
+    lede: "Up into the hills — the last kingdom, wrapped around its sacred lake.",
+    frameCount: KANDY_FRAME_COUNT,
+    frameSource: kandyFrameSource,
+    card: {
+      image: "/destinations/kandy-hotel.webp",
+      alt: "Colonial hotel in Kandy with elephant",
+      category: "Cultural",
+      title: "Kandy",
+      subtitle: "Temple of the Tooth · Esala Perahera",
+      description:
+        "Pay respects at the Temple of the Sacred Tooth Relic and feel the city's living traditions in every street.",
+    },
+  },
+  {
+    id: "matale",
+    number: "11",
+    eyebrow: "Central highlands",
+    title: "Matale",
+    lede: "Mist on still water — spice gardens and quiet valleys below the hills.",
+    frameCount: MATALE_FRAME_COUNT,
+    frameSource: mataleFrameSource,
+    card: {
+      image: "/destinations/matale-lake.webp",
+      alt: "Misty lake at dawn near Matale",
+      category: "Cultural",
+      title: "Matale",
+      subtitle: "Spice gardens · Sembuwatta Lake",
+      description:
+        "Wander fragrant spice gardens, then drift across mirror-still Sembuwatta Lake at first light.",
+    },
+  },
+  {
+    id: "nuwaraeliya",
+    number: "12",
+    eyebrow: "Tea country",
+    title: "Nuwara Eliya",
+    lede: "Little England in the hills — misty tea estates and the famous hill-country railway.",
+    frameCount: NUWARAELIYA_FRAME_COUNT,
+    frameSource: nuwaraeliyaFrameSource,
+    card: {
+      image: "/destinations/nuwaraeliya-train.webp",
+      alt: "Blue train crossing a stone viaduct in tea country",
+      category: "Adventure",
+      title: "Hill-Country Railway",
+      subtitle: "Train journeys · Tea estates",
+      description:
+        "Ride one of the world's most beautiful train journeys through emerald tea plantations and misty valleys.",
+    },
+  },
+  {
+    id: "ella",
+    number: "13",
+    eyebrow: "Hill country",
+    title: "Ella",
+    lede: "Waterfalls, viewpoints and the iconic bridge — the hills at their most dramatic.",
+    frameCount: ELLA_FRAME_COUNT,
+    frameSource: ellaFrameSource,
+    card: {
+      image: "/destinations/ella-bridge.webp",
+      alt: "Nine Arch Bridge with train in misty jungle",
+      category: "Adventure",
+      title: "Nine Arch Bridge",
+      subtitle: "Little Adam's Peak · Ravana Falls",
+      description:
+        "Walk the legendary Nine Arch Bridge, hike Little Adam's Peak at sunrise and chase the waterfalls of Ella.",
+    },
+  },
+  {
+    id: "badulla",
+    number: "14",
+    eyebrow: "Hill country",
+    title: "Badulla",
+    lede: "Beyond the crowds — quiet valleys, waterfalls and hidden eco retreats.",
+    frameCount: BADULLA_FRAME_COUNT,
+    frameSource: badullaFrameSource,
+    card: {
+      image: "/destinations/badulla-lodge.webp",
+      alt: "Eco lodge among tea plantations near Badulla",
+      category: "Adventure",
+      title: "Badulla Highlands",
+      subtitle: "Dunhinda Falls · Eco retreats",
+      description:
+        "Discover Dunhinda Falls, stay in lodges wrapped by tea gardens, and feel the unhurried rhythm of the highlands.",
+    },
+  },
+];
 
 function DestinationsOverlay({
   sectionRef,
@@ -942,6 +1228,9 @@ export default function App() {
         isVisible={preloaderState !== "visible"}
         onFirstFrameReady={handleFirstFrameReady}
       />
+      {journeyChapters.map((chapter) => (
+        <JourneyChapter key={chapter.id} chapter={chapter} />
+      ))}
       <section className="intro" id="discover">
         <p>Keep exploring</p>
         <h2>Every journey holds a different story.</h2>
