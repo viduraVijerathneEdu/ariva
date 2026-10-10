@@ -34,6 +34,7 @@ const KIRINDA_FRAME_COUNT = 300;
 const WELIGAMA_FRAME_COUNT = 300;
 const TANGALLE_FRAME_COUNT = 300;
 const HIKKADUWA_FRAME_COUNT = 300;
+const MAHIYANGANA_FRAME_COUNT = 300;
 const EXISTING_JOURNEY_END = 0.716;
 
 const heroFrameSource = (index: number) =>
@@ -86,6 +87,8 @@ const tangalleFrameSource = (index: number) =>
   `/tangalle-frames/tangalle-${String(index + 1).padStart(3, "0")}.webp`;
 const hikkaduwaFrameSource = (index: number) =>
   `/hikkaduwa-frames/hikkaduwa-${String(index + 1).padStart(3, "0")}.webp`;
+const mahiyanganaFrameSource = (index: number) =>
+  `/mahiyangana-frames/mahiyangana-${String(index + 1).padStart(3, "0")}.webp`;
 
 const destinations = [
   {
@@ -988,6 +991,24 @@ const journeyChapters: ChapterData[] = [
       subtitle: "Coral sanctuary · Nightlife",
       description:
         "Snorkel the coral sanctuary with sea turtles, then join the liveliest beach scene on the southwest coast.",
+    },
+  },
+  {
+    id: "mahiyangana",
+    number: "26",
+    eyebrow: "Eastern interior",
+    title: "Mahiyangana",
+    lede: "Sacred ground — where the island's story began, home of the Vedda people.",
+    frameCount: MAHIYANGANA_FRAME_COUNT,
+    frameSource: mahiyanganaFrameSource,
+    card: {
+      image: "/destinations/mahiyangana-buddha.webp",
+      alt: "Giant Buddha statue by the lake in Mahiyangana",
+      category: "Spiritual",
+      title: "Mahiyangana",
+      subtitle: "Sacred stupa · Vedda village",
+      description:
+        "Stand before the towering Buddha and visit Dambana, home of the indigenous Vedda community.",
     },
   },
 ];
