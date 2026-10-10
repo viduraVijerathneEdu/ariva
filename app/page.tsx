@@ -31,6 +31,7 @@ const MIRISSA_FRAME_COUNT = 300;
 const HIRIKETIYA_FRAME_COUNT = 300;
 const HUMMANAYA_FRAME_COUNT = 300;
 const KIRINDA_FRAME_COUNT = 300;
+const WELIGAMA_FRAME_COUNT = 300;
 const EXISTING_JOURNEY_END = 0.716;
 
 const heroFrameSource = (index: number) =>
@@ -77,6 +78,8 @@ const hummanayaFrameSource = (index: number) =>
   `/hummanaya-frames/hummanaya-${String(index + 1).padStart(3, "0")}.webp`;
 const kirindaFrameSource = (index: number) =>
   `/kirinda-frames/kirinda-${String(index + 1).padStart(3, "0")}.webp`;
+const weligamaFrameSource = (index: number) =>
+  `/weligama-frames/weligama-${String(index + 1).padStart(3, "0")}.webp`;
 
 const destinations = [
   {
@@ -925,6 +928,24 @@ const journeyChapters: ChapterData[] = [
       subtitle: "Rock temple · Wild beaches",
       description:
         "Visit the clifftop Kirinda Temple, then wander a coastline of giant boulders and empty golden sand.",
+    },
+  },
+  {
+    id: "weligama",
+    number: "23",
+    eyebrow: "South coast",
+    title: "Weligama",
+    lede: "The bay of the stilt fishermen — surf, seafood and timeless traditions.",
+    frameCount: WELIGAMA_FRAME_COUNT,
+    frameSource: weligamaFrameSource,
+    card: {
+      image: "/destinations/weligama-bay.webp",
+      alt: "Aerial view of Weligama bay with fishing boats",
+      category: "Cultural",
+      title: "Weligama",
+      subtitle: "Stilt fishermen · Surfing",
+      description:
+        "Watch stilt fishermen at dawn, learn to surf in the gentle bay, and feast on the day's catch by the sea.",
     },
   },
 ];
