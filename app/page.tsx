@@ -36,6 +36,7 @@ const TANGALLE_FRAME_COUNT = 300;
 const HIKKADUWA_FRAME_COUNT = 300;
 const MAHIYANGANA_FRAME_COUNT = 300;
 const RATNAPURA_FRAME_COUNT = 300;
+const SINHARAJA_FRAME_COUNT = 300;
 const EXISTING_JOURNEY_END = 0.716;
 
 const heroFrameSource = (index: number) =>
@@ -92,6 +93,8 @@ const mahiyanganaFrameSource = (index: number) =>
   `/mahiyangana-frames/mahiyangana-${String(index + 1).padStart(3, "0")}.webp`;
 const ratnapuraFrameSource = (index: number) =>
   `/ratnapura-frames/ratnapura-${String(index + 1).padStart(3, "0")}.webp`;
+const sinharajaFrameSource = (index: number) =>
+  `/sinharaja-frames/sinharaja-${String(index + 1).padStart(3, "0")}.webp`;
 
 const destinations = [
   {
@@ -1030,6 +1033,24 @@ const journeyChapters: ChapterData[] = [
       subtitle: "Gem mines · Samanalawewa",
       description:
         "Tour working gem mines, visit gem museums, and boat across still mountain lakes at dawn.",
+    },
+  },
+  {
+    id: "sinharaja",
+    number: "28",
+    eyebrow: "Rainforest",
+    title: "Sinharaja",
+    lede: "The last primeval rainforest — a world heritage of mist and birdsong.",
+    frameCount: SINHARAJA_FRAME_COUNT,
+    frameSource: sinharajaFrameSource,
+    card: {
+      image: "/destinations/sinharaja-forest.webp",
+      alt: "Sinharaja rainforest valley at sunrise",
+      category: "Wildlife",
+      title: "Sinharaja",
+      subtitle: "Guided treks · Endemic birds",
+      description:
+        "Trek with expert naturalists through ancient rainforest, home to birds and wildlife found nowhere else on Earth.",
     },
   },
 ];
