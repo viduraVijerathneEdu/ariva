@@ -38,6 +38,7 @@ const MAHIYANGANA_FRAME_COUNT = 300;
 const RATNAPURA_FRAME_COUNT = 300;
 const SINHARAJA_FRAME_COUNT = 300;
 const JAFFNA_FRAME_COUNT = 300;
+const COLOMBO_FRAME_COUNT = 300;
 const EXISTING_JOURNEY_END = 0.716;
 
 const heroFrameSource = (index: number) =>
@@ -98,6 +99,8 @@ const sinharajaFrameSource = (index: number) =>
   `/sinharaja-frames/sinharaja-${String(index + 1).padStart(3, "0")}.webp`;
 const jaffnaFrameSource = (index: number) =>
   `/jaffna-frames/jaffna-${String(index + 1).padStart(3, "0")}.webp`;
+const colomboFrameSource = (index: number) =>
+  `/colombo-frames/colombo-${String(index + 1).padStart(3, "0")}.webp`;
 
 const destinations = [
   {
@@ -1072,6 +1075,24 @@ const journeyChapters: ChapterData[] = [
       subtitle: "Nallur Temple · Islands",
       description:
         "Explore vibrant Hindu temples, taste the north's famous cuisine, and boat to the islands off the peninsula.",
+    },
+  },
+  {
+    id: "colombo",
+    number: "30",
+    eyebrow: "The capital",
+    title: "Colombo",
+    lede: "The journey comes full circle — the island's beating heart, by day and by night.",
+    frameCount: COLOMBO_FRAME_COUNT,
+    frameSource: colomboFrameSource,
+    card: {
+      image: "/destinations/colombo-tower.webp",
+      alt: "Lotus Tower above Colombo at night",
+      category: "Cultural",
+      title: "Colombo",
+      subtitle: "Lotus Tower · Galle Face",
+      description:
+        "End where every journey begins — rooftop sunsets, street food at Galle Face, and the glowing Lotus Tower.",
     },
   },
 ];
