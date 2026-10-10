@@ -27,6 +27,7 @@ const YALA_FRAME_COUNT = 300;
 const ARUGAMBAY_FRAME_COUNT = 300;
 const GALLE_FRAME_COUNT = 300;
 const BENTOTA_FRAME_COUNT = 300;
+const MIRISSA_FRAME_COUNT = 300;
 const EXISTING_JOURNEY_END = 0.716;
 
 const heroFrameSource = (index: number) =>
@@ -65,6 +66,8 @@ const galleFrameSource = (index: number) =>
   `/galle-frames/galle-${String(index + 1).padStart(3, "0")}.webp`;
 const bentotaFrameSource = (index: number) =>
   `/bentota-frames/bentota-${String(index + 1).padStart(3, "0")}.webp`;
+const mirissaFrameSource = (index: number) =>
+  `/mirissa-frames/mirissa-${String(index + 1).padStart(3, "0")}.webp`;
 
 const destinations = [
   {
@@ -841,6 +844,24 @@ const journeyChapters: ChapterData[] = [
       subtitle: "Water sports · River safaris",
       description:
         "Jet-ski, windsurf or cruise the Bentota River between mangroves — the southwest coast's playground.",
+    },
+  },
+  {
+    id: "mirissa",
+    number: "19",
+    eyebrow: "South coast",
+    title: "Mirissa",
+    lede: "Whales, turtles and coconut hills — the south coast at its most alive.",
+    frameCount: MIRISSA_FRAME_COUNT,
+    frameSource: mirissaFrameSource,
+    card: {
+      image: "/destinations/mirissa-turtle.webp",
+      alt: "Sea turtle gliding through clear blue water",
+      category: "Wildlife",
+      title: "Mirissa",
+      subtitle: "Whale watching · Snorkeling",
+      description:
+        "Sail out to meet blue whales, snorkel with turtles, and watch sunset from Coconut Tree Hill.",
     },
   },
 ];
