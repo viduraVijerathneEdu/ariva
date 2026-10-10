@@ -24,6 +24,7 @@ const NUWARAELIYA_FRAME_COUNT = 300;
 const ELLA_FRAME_COUNT = 300;
 const BADULLA_FRAME_COUNT = 300;
 const YALA_FRAME_COUNT = 300;
+const ARUGAMBAY_FRAME_COUNT = 300;
 const EXISTING_JOURNEY_END = 0.716;
 
 const heroFrameSource = (index: number) =>
@@ -56,6 +57,8 @@ const badullaFrameSource = (index: number) =>
   `/badulla-frames/badulla-${String(index + 1).padStart(3, "0")}.webp`;
 const yalaFrameSource = (index: number) =>
   `/yala-frames/yala-${String(index + 1).padStart(3, "0")}.webp`;
+const arugambayFrameSource = (index: number) =>
+  `/arugambay-frames/arugambay-${String(index + 1).padStart(3, "0")}.webp`;
 
 const destinations = [
   {
@@ -778,6 +781,24 @@ const journeyChapters: ChapterData[] = [
       subtitle: "Leopard safaris · Bundala wetlands",
       description:
         "Track leopards with expert rangers at dawn in Sri Lanka's most famous wilderness, from Tissamaharama.",
+    },
+  },
+  {
+    id: "arugambay",
+    number: "16",
+    eyebrow: "East coast",
+    title: "Arugam Bay",
+    lede: "The surf coast — legendary breaks and barefoot evenings by the bay.",
+    frameCount: ARUGAMBAY_FRAME_COUNT,
+    frameSource: arugambayFrameSource,
+    card: {
+      image: "/destinations/arugambay-beach.webp",
+      alt: "Palm-fringed beach at sunset in Arugam Bay",
+      category: "Adventure",
+      title: "Arugam Bay",
+      subtitle: "Surfing · Lagoon safaris",
+      description:
+        "Ride world-class point breaks by day and unwind under palms as the sun drops into the Indian Ocean.",
     },
   },
 ];
