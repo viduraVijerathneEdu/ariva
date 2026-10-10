@@ -32,6 +32,7 @@ const HIRIKETIYA_FRAME_COUNT = 300;
 const HUMMANAYA_FRAME_COUNT = 300;
 const KIRINDA_FRAME_COUNT = 300;
 const WELIGAMA_FRAME_COUNT = 300;
+const TANGALLE_FRAME_COUNT = 300;
 const EXISTING_JOURNEY_END = 0.716;
 
 const heroFrameSource = (index: number) =>
@@ -80,6 +81,8 @@ const kirindaFrameSource = (index: number) =>
   `/kirinda-frames/kirinda-${String(index + 1).padStart(3, "0")}.webp`;
 const weligamaFrameSource = (index: number) =>
   `/weligama-frames/weligama-${String(index + 1).padStart(3, "0")}.webp`;
+const tangalleFrameSource = (index: number) =>
+  `/tangalle-frames/tangalle-${String(index + 1).padStart(3, "0")}.webp`;
 
 const destinations = [
   {
@@ -946,6 +949,24 @@ const journeyChapters: ChapterData[] = [
       subtitle: "Stilt fishermen · Surfing",
       description:
         "Watch stilt fishermen at dawn, learn to surf in the gentle bay, and feast on the day's catch by the sea.",
+    },
+  },
+  {
+    id: "tangalle",
+    number: "24",
+    eyebrow: "South coast",
+    title: "Tangalle",
+    lede: "Silent beaches and swaying palms — the deep south at its most peaceful.",
+    frameCount: TANGALLE_FRAME_COUNT,
+    frameSource: tangalleFrameSource,
+    card: {
+      image: "/destinations/tangalle-palms.webp",
+      alt: "Coconut palms over a pristine Tangalle beach",
+      category: "Adventure",
+      title: "Tangalle",
+      subtitle: "Silent beaches · Turtle nesting",
+      description:
+        "Walk empty golden beaches, watch turtles nest under the stars, and disappear into the quiet of the deep south.",
     },
   },
 ];
