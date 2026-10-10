@@ -33,6 +33,7 @@ const HUMMANAYA_FRAME_COUNT = 300;
 const KIRINDA_FRAME_COUNT = 300;
 const WELIGAMA_FRAME_COUNT = 300;
 const TANGALLE_FRAME_COUNT = 300;
+const HIKKADUWA_FRAME_COUNT = 300;
 const EXISTING_JOURNEY_END = 0.716;
 
 const heroFrameSource = (index: number) =>
@@ -83,6 +84,8 @@ const weligamaFrameSource = (index: number) =>
   `/weligama-frames/weligama-${String(index + 1).padStart(3, "0")}.webp`;
 const tangalleFrameSource = (index: number) =>
   `/tangalle-frames/tangalle-${String(index + 1).padStart(3, "0")}.webp`;
+const hikkaduwaFrameSource = (index: number) =>
+  `/hikkaduwa-frames/hikkaduwa-${String(index + 1).padStart(3, "0")}.webp`;
 
 const destinations = [
   {
@@ -967,6 +970,24 @@ const journeyChapters: ChapterData[] = [
       subtitle: "Silent beaches · Turtle nesting",
       description:
         "Walk empty golden beaches, watch turtles nest under the stars, and disappear into the quiet of the deep south.",
+    },
+  },
+  {
+    id: "hikkaduwa",
+    number: "25",
+    eyebrow: "Southwest coast",
+    title: "Hikkaduwa",
+    lede: "Coral reefs, beach parties and the famous southwest buzz.",
+    frameCount: HIKKADUWA_FRAME_COUNT,
+    frameSource: hikkaduwaFrameSource,
+    card: {
+      image: "/destinations/hikkaduwa-bay.webp",
+      alt: "Aerial view of Hikkaduwa bay",
+      category: "Wildlife",
+      title: "Hikkaduwa",
+      subtitle: "Coral sanctuary · Nightlife",
+      description:
+        "Snorkel the coral sanctuary with sea turtles, then join the liveliest beach scene on the southwest coast.",
     },
   },
 ];
