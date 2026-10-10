@@ -30,6 +30,7 @@ const BENTOTA_FRAME_COUNT = 300;
 const MIRISSA_FRAME_COUNT = 300;
 const HIRIKETIYA_FRAME_COUNT = 300;
 const HUMMANAYA_FRAME_COUNT = 300;
+const KIRINDA_FRAME_COUNT = 300;
 const EXISTING_JOURNEY_END = 0.716;
 
 const heroFrameSource = (index: number) =>
@@ -74,6 +75,8 @@ const hiriketiyaFrameSource = (index: number) =>
   `/hiriketiya-frames/hiriketiya-${String(index + 1).padStart(3, "0")}.webp`;
 const hummanayaFrameSource = (index: number) =>
   `/hummanaya-frames/hummanaya-${String(index + 1).padStart(3, "0")}.webp`;
+const kirindaFrameSource = (index: number) =>
+  `/kirinda-frames/kirinda-${String(index + 1).padStart(3, "0")}.webp`;
 
 const destinations = [
   {
@@ -904,6 +907,24 @@ const journeyChapters: ChapterData[] = [
       subtitle: "Natural wonder · Coastal cliffs",
       description:
         "Feel the ground tremble as the sea erupts skyward through the rock — the island's most dramatic natural show.",
+    },
+  },
+  {
+    id: "kirinda",
+    number: "22",
+    eyebrow: "Southeast coast",
+    title: "Kirinda",
+    lede: "Wild and windswept — boulders, surf and a sacred temple on the rocks.",
+    frameCount: KIRINDA_FRAME_COUNT,
+    frameSource: kirindaFrameSource,
+    card: {
+      image: "/destinations/kirinda-coast.webp",
+      alt: "Rocky beach with boulders at Kirinda",
+      category: "Cultural",
+      title: "Kirinda",
+      subtitle: "Rock temple · Wild beaches",
+      description:
+        "Visit the clifftop Kirinda Temple, then wander a coastline of giant boulders and empty golden sand.",
     },
   },
 ];
