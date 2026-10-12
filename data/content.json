@@ -1,0 +1,721 @@
+{
+  "site": {
+    "name": "Ariva Travel",
+    "tagline": "Sri Lanka, made personal",
+    "phone": "+94 70 259 2679",
+    "whatsapp": "94702592679",
+    "email": "info@ariva.lk",
+    "address": "Negombo, Sri Lanka"
+  },
+  "hero": {
+    "eyebrow": "Ariva Travel · Sri Lanka",
+    "title": "Sri Lanka, made personal",
+    "subtitle": "Handcrafted journeys across the island — ancient cities, wild safaris, surf beaches and misty highlands — planned around you, guided by locals.",
+    "image": "/images/bg-hiriketiya-surf.jpg",
+    "video": "/hero-beach-waves.mp4"
+  },
+  "whyAriva": {
+    "title": "Why travel with Ariva",
+    "points": [
+      {
+        "title": "Fully customisable",
+        "text": "Every package bends around you. Pick your destinations and activities on the map — the price recalculates instantly, with no per-activity price tags shown."
+      },
+      {
+        "title": "Real local guides",
+        "text": "Choose your own licensed chauffeur-guide or driver. Every guide has a public profile with genuine guest reviews."
+      },
+      {
+        "title": "Handpicked stays",
+        "text": "Silver, Gold and Platinum each unlock a wider choice of hotels — from comfortable 3-star gems to 5-star-plus icons. Browse every hotel's own website before you decide."
+      },
+      {
+        "title": "Honest pricing",
+        "text": "One total price in your own currency. Customise freely — the total updates, but individual activity prices stay private."
+      }
+    ]
+  },
+  "tiers": [
+    {
+      "id": "silver",
+      "name": "Silver",
+      "tagline": "Comfort, Flexibility & Value",
+      "lunch": "Flexible dining — lunch is arranged around your schedule and location. Choose any restaurant that suits your taste, from local rice & curry to international dining.",
+      "transport": "Comfortable sedan with room for your luggage. The vehicle grows with your group — from a sedan for two up to vans and coaches for larger parties.",
+      "guide": "English-speaking professional chauffeur who keeps your journey smooth and comfortable.",
+      "accommodation": "Carefully selected 3-star to 5-star hotels on half-board (breakfast + dinner), matched to your itinerary and budget.",
+      "idealFor": "Travellers who value flexibility, comfortable transport and the freedom to choose their own dining.",
+      "highlights": ["Lunch at your own choice", "Comfortable sedan", "English-speaking chauffeur", "3★–5★ hotels, half-board", "Choose from 4+ hotels"],
+      "hotelChoiceNote": "Choose from 4+ handpicked hotels per destination"
+    },
+    {
+      "id": "gold",
+      "name": "Gold",
+      "tagline": "Enhanced Comfort & Professional Guidance",
+      "lunch": "Buffet lunch included — Sri Lankan specialities or European-style buffets, arranged along your route.",
+      "transport": "Comfortable sedan with generous luggage space, sized to your group.",
+      "guide": "Qualified, licensed English-speaking chauffeur-guide who brings the island's culture, history and nature to life. Prefer another language? Request it — subject to availability.",
+      "accommodation": "Selected 5-star hotels on half-board (breakfast + dinner). Choose from 5 proposed hotels or name your preferred one.",
+      "idealFor": "Travellers seeking enhanced comfort, professional guiding and effortless days.",
+      "highlights": ["Buffet lunch included", "Comfortable sedan", "Licensed chauffeur-guide", "5★ hotels, half-board", "Choose from 5 proposed hotels"],
+      "hotelChoiceNote": "Choose from 5 proposed 5-star hotels per destination"
+    },
+    {
+      "id": "platinum",
+      "name": "Platinum",
+      "tagline": "Premium Comfort & Personalised Experiences",
+      "lunch": "Your choice, your experience — authentic Sri Lankan, international, fine dining or a special culinary experience, with set-menu options we arrange for you.",
+      "transport": "Premium SUV with extra space and comfort, sized to your group and luggage.",
+      "guide": "Private, nationally licensed tourist guide speaking your preferred language, for a deeper journey into heritage, culture, nature and wildlife.",
+      "accommodation": "Luxury and premium 5-star-plus stays, or your own preferred hotels — shaped around your travel style.",
+      "idealFor": "Travellers seeking a premium, personalised experience with full flexibility.",
+      "highlights": ["Lunch — your choice, incl. set menus", "Premium SUV", "Private guide in your language", "Luxury 5★+ hotels", "Choose from 10+ hotels"],
+      "hotelChoiceNote": "Choose from 10+ luxury hotels per destination"
+    }
+  ],
+  "vibes": [
+    {
+      "id": "cultural",
+      "name": "Cultural & Heritage",
+      "tagline": "Ancient kingdoms, sacred temples, living traditions",
+      "description": "Walk among 2,000-year-old stupas, climb the rock fortress of Sigiriya, witness the sacred Temple of the Tooth and feel the rhythm of Kandyan dance. The island's soul, told by the people who keep it.",
+      "image": "/images/bg-galle-fort.jpg",
+      "sampleItinerary": ["Sigiriya rock fortress at sunrise", "Dambulla cave temples", "Temple of the Tooth, Kandy", "Ancient cities of Anuradhapura & Polonnaruwa", "Traditional dance & village life"]
+    },
+    {
+      "id": "wildlife",
+      "name": "Wildlife & Safari",
+      "tagline": "Leopards, elephants and endless birdsong",
+      "description": "Track leopards in Yala, watch elephants gather at Minneriya, drift past crocodiles on the Madu river and wake to hornbills in Wilpattu. Sri Lanka packs Africa-scale wildlife into one small island.",
+      "image": "/images/package-wild-leopard.jpg",
+      "sampleItinerary": ["Yala leopard safari", "Minneriya elephant gathering", "Bundala birdwatching", "Wilpattu wilderness", "Whale watching in Mirissa"]
+    },
+    {
+      "id": "adventure",
+      "name": "Adventure & Coast",
+      "tagline": "Surf, raft, hike and dive the island edge",
+      "description": "Surf reef breaks in Arugam Bay, raft the rapids of Kitulgala, zipline over Ella's valleys and kitesurf the lagoons of Kalpitiya. Coastal escapes included — the island's best beaches are part of the ride.",
+      "image": "/images/bg-arugam-surf.jpg",
+      "includesCoastal": true,
+      "sampleItinerary": ["Surf Arugam Bay & Weligama", "White-water rafting, Kitulgala", "Zipline & hikes in Ella", "Kitesurfing, Kalpitiya", "Snorkelling & diving down south"]
+    },
+    {
+      "id": "spiritual",
+      "name": "Spiritual Journey",
+      "tagline": "Sacred sites, quiet minds, ancient wisdom",
+      "description": "From the Temple of the Tooth to hillside kovils and forest monasteries — a slower journey through the island's sacred geography, with time for meditation, Ayurveda and reflection.",
+      "image": "/images/card-tissa-lily-boat.jpg",
+      "sampleItinerary": ["Temple of the Sacred Tooth, Kandy", "Anuradhapura's sacred stupas", "Seetha Amman Kovil, Nuwara Eliya", "Koneshwaram Kovil, Trincomalee", "Ayurvedic spa & meditation"]
+    },
+    {
+      "id": "economy",
+      "name": "Economy",
+      "tagline": "Smart travel, full island",
+      "description": "All the highlights, planned smartly. Our Economy packages are being crafted now — leave your email and be first to travel more for less.",
+      "image": "/images/card-surf-lesson-4.jpg",
+      "comingSoon": true,
+      "sampleItinerary": []
+    }
+  ],
+  "destinations": [
+    {
+      "slug": "negombo",
+      "name": "Negombo",
+      "tagline": "Beach town by the lagoon, minutes from the airport",
+      "description": "Most journeys begin here — a breezy coastal town of fishing boats, Dutch canals and golden beaches, just 20 minutes from the international airport. Perfect for a soft landing or a final sunset.",
+      "image": "/images/card-muthurajawela-channel.jpg",
+      "order": 1,
+      "activities": [
+        { "name": "Negombo lagoon boat safari", "description": "Glide through mangroves and fishing villages on a quiet morning boat ride.", "vibes": ["wildlife", "adventure"] },
+        { "name": "Muthurajawela marsh boat safari", "description": "Explore Sri Lanka's largest coastal wetland — herons, monkeys and baby crocodiles.", "vibes": ["wildlife"] },
+        { "name": "Dry fish market", "description": "A sensory walk through the famous 'Lellama' where the day's catch dries in the sun.", "vibes": ["cultural"] },
+        { "name": "St. Mary's Church", "description": "Negombo's grand neoclassical church, the heart of the town's Catholic heritage.", "vibes": ["cultural", "spiritual"] },
+        { "name": "Kitulgala white-water rafting (day trip)", "description": "Grade 2–3 rapids through rainforest, 2 hours inland — Sri Lanka's rafting capital.", "vibes": ["adventure"] }
+      ],
+      "hotels": [
+        { "name": "Jetwing Beach", "stars": 5, "area": "Negombo beach", "blurb": "Beachfront resort with a large pool, spa and seafood restaurants on Lewis Place.", "website": "https://www.jetwinghotels.com" },
+        { "name": "Heritance Negombo", "stars": 5, "area": "Negombo beach", "blurb": "Modern luxury resort with rooftop infinity pool overlooking the ocean.", "website": "https://www.heritancehotels.com" }
+      ],
+      "businesses": []
+    },
+    {
+      "slug": "kalpitiya",
+      "name": "Kalpitiya",
+      "tagline": "Kitesurf lagoons and dolphin seas",
+      "description": "A wild peninsula of lagoons and sandbars — Sri Lanka's kitesurfing mecca in season, with spinner dolphins dancing offshore and Wilpattu's edge a short drive away.",
+      "image": "/images/card-surf-spray.jpg",
+      "order": 2,
+      "activities": [
+        { "name": "Kitesurfing", "description": "World-class flat-water lagoons from May to October — lessons for every level.", "vibes": ["adventure"] },
+        { "name": "Dolphin watching", "description": "Hundreds of spinner dolphins ride the bow waves on early-morning boat trips.", "vibes": ["wildlife"] },
+        { "name": "Kalpitiya lagoon kayaking", "description": "Paddle mangrove channels at sunset as birds return to roost.", "vibes": ["wildlife", "adventure"] }
+      ],
+      "hotels": [
+        { "name": "Uga Ulagalla (via Anuradhapura)", "stars": 5, "area": "Thirappane", "blurb": "Luxury boutique resort among paddy fields, 1.5 hrs inland — a favourite base for the region." }
+      ],
+      "businesses": []
+    },
+    {
+      "slug": "wilpattu",
+      "name": "Wilpattu",
+      "tagline": "The land of lakes — leopard country",
+      "description": "Sri Lanka's largest national park, a maze of natural lakes ('villus') in dense dry forest. Fewer jeeps, wilder feeling — and some of the island's best leopard sightings.",
+      "image": "/images/bg-wilpattu-leopard.jpg",
+      "order": 3,
+      "activities": [
+        { "name": "Wilpattu safari (full/half day)", "description": "Track leopards, sloth bears and elephants through villu-dotted forest with expert trackers.", "vibes": ["wildlife"] },
+        { "name": "Birdwatching", "description": "Painted storks, serpent eagles and endemic junglefowl around the villus.", "vibes": ["wildlife"] }
+      ],
+      "hotels": [
+        { "name": "Big Game Camp Wilpattu", "stars": 4, "area": "Park boundary", "blurb": "Luxury tented safari camp on the park's edge — fall asleep to jungle sounds." }
+      ],
+      "businesses": []
+    },
+    {
+      "slug": "jaffna",
+      "name": "Jaffna",
+      "tagline": "The north's proud Tamil heartland",
+      "description": "Palmyrah palms, vibrant kovils and a cuisine unlike anywhere else on the island. Jaffna rewards curious travellers with Delft's wild horses, Nainativu's temples and unforgettable crab curry.",
+      "image": "/images/card-coconut-hill.jpg",
+      "order": 4,
+      "activities": [
+        { "name": "Jaffna Fort & old town", "description": "Dutch-era ramparts and bustling markets in the peninsula's historic core.", "vibes": ["cultural"] },
+        { "name": "Nainativu island temples", "description": "Ferry to the sacred Nagapooshani Amman kovil and Buddhist Nagadeepa Vihara.", "vibes": ["spiritual", "cultural"] },
+        { "name": "Delft Island", "description": "Wild horses, coral walls and a giant's footprint on this remote island.", "vibes": ["adventure", "cultural"] },
+        { "name": "Jaffna food trail", "description": "Crab curry, kool and palmyrah toddy — the island's boldest flavours.", "vibes": ["cultural"] }
+      ],
+      "hotels": [
+        { "name": "Jetwing Jaffna", "stars": 4, "area": "Jaffna town", "blurb": "Contemporary hotel in the city centre — the most comfortable base in the north.", "website": "https://www.jetwinghotels.com" }
+      ],
+      "businesses": []
+    },
+    {
+      "slug": "anuradhapura",
+      "name": "Anuradhapura",
+      "tagline": "The sacred ancient capital",
+      "description": "Two millennia of Buddhist heritage among towering stupas and ancient reservoirs. Cycle between the Sri Maha Bodhi — grown from the original Bodhi tree — and the great Ruwanwelisaya dagoba.",
+      "image": "/images/bg-packages-lake-sunset.jpg",
+      "order": 5,
+      "activities": [
+        { "name": "Ancient city by bicycle", "description": "Ride between stupas, monasteries and moonstones with a local guide.", "vibes": ["cultural", "spiritual"] },
+        { "name": "Sri Maha Bodhi & Ruwanwelisaya", "description": "Pay respects at the world's oldest documented tree and the great white dagoba.", "vibes": ["spiritual", "cultural"] },
+        { "name": "Kayaking in Kala Wewa", "description": "Paddle the 1,500-year-old reservoir at golden hour, elephants sometimes at the shore.", "vibes": ["adventure", "wildlife"] }
+      ],
+      "hotels": [
+        { "name": "Uga Ulagalla", "stars": 5, "area": "Thirappane", "blurb": "Ultra-luxury boutique resort on 58 acres — private pools, paddy fields and superb dining." }
+      ],
+      "businesses": []
+    },
+    {
+      "slug": "yapahuwa",
+      "name": "Yapahuwa",
+      "tagline": "The rock fortress with the lion staircase",
+      "description": "A 13th-century citadel rising from the plains, guarded by its famous ornamental lion staircase. Quieter than Sigiriya, just as dramatic — with a forest monastery nearby.",
+      "image": "/images/card-udawattakele-lizard.jpg",
+      "order": 6,
+      "activities": [
+        { "name": "Yapahuwa rock fortress climb", "description": "Climb past stone lions to the palace ruins with sweeping views over the plains.", "vibes": ["cultural", "adventure"] },
+        { "name": "Ridee Viharaya", "description": "Silver temple with ancient murals, set peacefully among the rocks.", "vibes": ["spiritual", "cultural"] },
+        { "name": "Skydiving & para jumping", "description": "Tandem jumps with island views — for true adrenaline seekers.", "vibes": ["adventure"] }
+      ],
+      "hotels": [],
+      "businesses": []
+    },
+    {
+      "slug": "dambulla",
+      "name": "Dambulla",
+      "tagline": "Cave temples and elephant plains",
+      "description": "Home to the island's best-preserved cave temple complex — 150 Buddha images painted across five caves — and the gateway to the elephant safaris of Minneriya and Kaudulla.",
+      "image": "/images/card-udawalawe-deer.jpg",
+      "order": 7,
+      "activities": [
+        { "name": "Dambulla cave temple", "description": "Five caves of 2,000-year-old murals and 150 Buddha statues — a UNESCO wonder.", "vibes": ["cultural", "spiritual"] },
+        { "name": "Minneriya / Kaudulla elephant safari", "description": "Watch hundreds of wild elephants gather — 'The Gathering', Asia's greatest wildlife spectacle.", "vibes": ["wildlife"] },
+        { "name": "Dambulla market", "description": "The island's biggest produce market — a riot of colour, spice and noise.", "vibes": ["cultural"] },
+        { "name": "Authentic Sri Lankan lunch", "description": "A traditional village lunch, served the local way.", "vibes": ["cultural"] },
+        { "name": "Cultural dancing performance", "description": "Kandyan dancers, drummers and fire acts in the evening.", "vibes": ["cultural"] }
+      ],
+      "hotels": [
+        { "name": "Heritance Kandalama", "stars": 5, "area": "Dambulla", "blurb": "Geoffrey Bawa's jungle-clad masterpiece wrapped around a rock, overlooking Kandalama lake.", "website": "https://www.heritancehotels.com" },
+        { "name": "Cinnamon Lodge Habarana", "stars": 5, "area": "Habarana", "blurb": "Safari-style chalets scattered through forest — monkeys on the lawn at breakfast.", "website": "https://www.cinnamonhotels.com" }
+      ],
+      "businesses": []
+    },
+    {
+      "slug": "sigiriya",
+      "name": "Sigiriya",
+      "tagline": "The eighth wonder of the world",
+      "description": "A 200-metre rock rising from the jungle, crowned by a 5th-century palace. Climb past the frescoes of the cloud maidens and the giant lion's paws to the summit gardens.",
+      "image": "/images/bg-udawalawe-hotels-treehouse.jpg",
+      "order": 8,
+      "activities": [
+        { "name": "Sigiriya rock fortress", "description": "The iconic climb — frescoes, mirror wall and the sky palace at the top.", "vibes": ["cultural", "adventure"] },
+        { "name": "Pidurangala rock (sunrise/sunset)", "description": "The rival rock with the best VIEW of Sigiriya — magical at dawn.", "vibes": ["adventure", "cultural"] },
+        { "name": "Village safari", "description": "Bullock cart, catamaran and a home-cooked village lunch.", "vibes": ["cultural"] },
+        { "name": "Hot air balloon ride", "description": "Drift over the cultural triangle at sunrise — unforgettable.", "vibes": ["adventure"] },
+        { "name": "Elephant ride / sanctuary visit", "description": "Meet elephants ethically at a nearby sanctuary.", "vibes": ["wildlife"] },
+        { "name": "Silk factory & saree experience", "description": "See silk being woven and try wearing a traditional saree.", "vibes": ["cultural"] },
+        { "name": "Ayurvedic spa treatments", "description": "Traditional treatments at renowned spas — Athreya, Isiwara Pauwra and Iswara Prana.", "vibes": ["spiritual"] }
+      ],
+      "hotels": [
+        { "name": "Jetwing Vil Uyana", "stars": 5, "area": "Sigiriya", "blurb": "Luxury eco-dwellings over wetlands — consistently ranked among the world's best.", "website": "https://www.jetwinghotels.com" },
+        { "name": "Cinnamon Lodge Habarana", "stars": 5, "area": "Habarana", "blurb": "Forest chalets 20 minutes from the rock.", "website": "https://www.cinnamonhotels.com" }
+      ],
+      "businesses": [
+        { "name": "Sigiriya silk factory", "type": "Craft centre", "blurb": "Watch silk weaving and try the saree experience — book your visit through Ariva." }
+      ]
+    },
+    {
+      "slug": "polonnaruwa",
+      "name": "Polonnaruwa",
+      "tagline": "The medieval capital in stone",
+      "description": "The island's second ancient capital — a compact archaeological park of giant Buddha statues, royal palaces and the vast Parakrama Samudra reservoir. Best explored by bicycle.",
+      "image": "/images/card-tissa-lily-boat.jpg",
+      "order": 9,
+      "activities": [
+        { "name": "Ancient city cycling tour", "description": "Gal Vihara's rock Buddhas, the Royal Palace and the Sacred Quadrangle by bike.", "vibes": ["cultural"] },
+        { "name": "Parakrama Samudra", "description": "The 12th-century 'Sea of Parakrama' — walk or boat its bunds at sunset.", "vibes": ["cultural", "wildlife"] }
+      ],
+      "hotels": [],
+      "businesses": []
+    },
+    {
+      "slug": "trincomalee",
+      "name": "Trincomalee",
+      "tagline": "Temples above a sapphire bay",
+      "description": "One of the world's great natural harbours, watched over by the cliff-top Koneshwaram Kovil. Whale watching, Pigeon Island snorkelling and some of the island's calmest beaches.",
+      "image": "/images/card-parrot-rock.jpg",
+      "order": 10,
+      "activities": [
+        { "name": "Whale watching", "description": "Blue whales and sperm whales cruise past from March to August.", "vibes": ["wildlife"] },
+        { "name": "Snorkelling at Pigeon Island", "description": "Coral gardens, reef sharks and turtles in a marine national park.", "vibes": ["wildlife", "adventure"] },
+        { "name": "Surfing (beginners)", "description": "Gentle beach breaks — learn to stand up in warm water.", "vibes": ["adventure"] },
+        { "name": "Koneshwaram Kovil", "description": "The cliff-top 'Temple of a Thousand Pillars' with staggering ocean views.", "vibes": ["spiritual", "cultural"] },
+        { "name": "Natural hot water springs", "description": "Seven wells of naturally hot water at Kanniya — a local pilgrimage.", "vibes": ["spiritual", "cultural"] },
+        { "name": "Nilaveli & Jungle Beach", "description": "Powder-white sand and swaying palms, minutes from town.", "vibes": ["adventure"] }
+      ],
+      "hotels": [
+        { "name": "Uga Jungle Beach", "stars": 5, "area": "Kuchchaveli", "blurb": "Beach-chic luxury cabins in coastal jungle, north of Trinco town." }
+      ],
+      "businesses": []
+    },
+    {
+      "slug": "matale",
+      "name": "Matale",
+      "tagline": "Spice gardens on the road to the hills",
+      "description": "A fragrant stopover between the cultural triangle and Kandy — Matale's spice gardens have perfumed this valley for centuries. Walk among cinnamon, cardamom and vanilla with a master grower.",
+      "image": "/images/card-spice-garden.jpg",
+      "order": 11,
+      "activities": [
+        { "name": "Spice garden tour", "description": "See, smell and taste how cinnamon, pepper, cardamom and Ayurvedic herbs grow — with a herbal head massage to finish.", "vibes": ["cultural"] },
+        { "name": "Aluvihara Rock Temple", "description": "The monastery where the Pali canon was first written down, 2,000 years ago.", "vibes": ["spiritual", "cultural"] }
+      ],
+      "hotels": [],
+      "businesses": [
+        { "name": "Matale spice gardens", "type": "Spice garden", "blurb": "Family-run gardens with guided tours and Ayurvedic products — visits arranged through Ariva." }
+      ]
+    },
+    {
+      "slug": "kandy",
+      "name": "Kandy",
+      "tagline": "The hill capital of kings",
+      "description": "Sri Lanka's cultural heart — a lakeside city of temples, dancers and colonial streets, guarded by the sacred Temple of the Tooth. No island journey is complete without it.",
+      "image": "/images/card-peradeniya-garden.jpg",
+      "order": 12,
+      "activities": [
+        { "name": "Temple of the Sacred Tooth Relic", "description": "The island's holiest Buddhist shrine — visit for the evening puja ceremony.", "vibes": ["spiritual", "cultural"] },
+        { "name": "Royal Botanical Gardens, Peradeniya", "description": "60 hectares of orchids, giant palms and a famous avenue of royal palms.", "vibes": ["cultural", "wildlife"] },
+        { "name": "Cultural dancing performance", "description": "Kandyan dancers, fire-eaters and drummers in a nightly lakeside show.", "vibes": ["cultural"] },
+        { "name": "Hanthana mountain hike", "description": "A half-day ridge walk with the best views over Kandy city.", "vibes": ["adventure"] },
+        { "name": "Udawatte Kele sanctuary", "description": "A pocket of ancient rainforest right behind the Tooth Temple — monkeys, birds and giant lianas.", "vibes": ["wildlife"] },
+        { "name": "Gem museum", "description": "Learn how Ceylon sapphires go from mine to jewel — with certified shopping.", "vibes": ["cultural"] },
+        { "name": "Wood carving centre", "description": "Watch master carvers shape masks and elephants from rain tree wood.", "vibes": ["cultural"] },
+        { "name": "Pinnawala Elephant Orphanage", "description": "The world's largest herd of captive elephants, bathing in the river twice daily.", "vibes": ["wildlife"] },
+        { "name": "Victoria Golf Club, Digana", "description": "An 18-hole championship course in the hills, 30 minutes from town.", "vibes": ["adventure"] },
+        { "name": "Evening high tea", "description": "Colonial-style high tea with hill-country views.", "vibes": ["cultural"] }
+      ],
+      "hotels": [
+        { "name": "Earl's Regency", "stars": 5, "area": "Kandy", "blurb": "Grand hill-country hotel with a huge pool and views over the Knuckles range.", "website": "https://www.aitkenspencehotels.com" },
+        { "name": "The Grand Hotel Kandy", "stars": 4, "area": "Kandy", "blurb": "Heritage hotel from 1844 with old-world charm near the lake." },
+        { "name": "Serendib Signature", "stars": 4, "area": "Kandy", "blurb": "Boutique comfort in the hills, recommended by our local team." }
+      ],
+      "businesses": [
+        { "name": "Kandy gem museum", "type": "Gem shop", "blurb": "Certified Ceylon sapphires with museum tour — book through Ariva for trusted pricing." },
+        { "name": "Kandy wood carving centre", "type": "Craft centre", "blurb": "Traditional masks and sculptures, carved before your eyes." }
+      ]
+    },
+    {
+      "slug": "nuwara-eliya",
+      "name": "Nuwara Eliya",
+      "tagline": "Little England in the clouds",
+      "description": "Tea estates, colonial bungalows and crisp mountain air at 1,868 metres. Walk Horton Plains to World's End, tour a working tea factory and warm up with proper high tea.",
+      "image": "/images/bg-packages-lake-sunset.jpg",
+      "order": 13,
+      "activities": [
+        { "name": "Tea plantation & tea safari", "description": "Pluck tea with the pickers and tour a working factory, from leaf to cup.", "vibes": ["cultural"] },
+        { "name": "Horton Plains & World's End", "description": "A high-plateau walk to a sheer 880m cliff drop — start at dawn.", "vibes": ["adventure", "wildlife"] },
+        { "name": "Gregory Park & lake", "description": "Boating and pony rides around the town's pretty lake.", "vibes": ["adventure"] },
+        { "name": "Seetha Amman Kovil", "description": "The colourful temple where Sita is said to have been held in the Ramayana.", "vibes": ["spiritual", "cultural"] },
+        { "name": "Lover's Leap & Ramboda waterfalls", "description": "Two dramatic falls wrapped in legend and tea country.", "vibes": ["adventure"] },
+        { "name": "Pidurutalagala hike", "description": "Climb the island's highest peak (2,524m) for sunrise over the hill country.", "vibes": ["adventure"] },
+        { "name": "Evening high tea", "description": "Cucumber sandwiches and Ceylon tea in a grand colonial hotel.", "vibes": ["cultural"] }
+      ],
+      "hotels": [
+        { "name": "Heritance Tea Factory", "stars": 5, "area": "Nuwara Eliya", "blurb": "A converted 1930s tea factory — stay where the tea was made.", "website": "https://www.heritancehotels.com" },
+        { "name": "The Grand Hotel Nuwara Eliya", "stars": 4, "area": "Town centre", "blurb": "The classic 'Little England' experience since 1891." }
+      ],
+      "businesses": []
+    },
+    {
+      "slug": "ella",
+      "name": "Ella",
+      "tagline": "Waterfalls, railways and mountain air",
+      "description": "The backpacker's mountain paradise — hike Ella Rock at dawn, cross the Nine Arches Bridge as the blue train passes, and chase waterfalls through tea country.",
+      "image": "/images/card-udawalawe-deer.jpg",
+      "order": 14,
+      "activities": [
+        { "name": "Ella Rock hike", "description": "The classic 3-hour climb for the island's most famous viewpoint.", "vibes": ["adventure"] },
+        { "name": "Little Adam's Peak", "description": "An easy sunset hike — plus zipline and skywalk at Ravana Adventure Centre.", "vibes": ["adventure"] },
+        { "name": "Nine Arches Bridge", "description": "The iconic viaduct — time it with the passing train for the perfect photo.", "vibes": ["cultural", "adventure"] },
+        { "name": "Ravana Falls & caves", "description": "Legend says Ravana hid Sita in these caves behind the falls.", "vibes": ["adventure", "cultural"] },
+        { "name": "Nildiya Pokuna natural pool", "description": "A hidden jungle pool under the rocks — swim if you dare.", "vibes": ["adventure"] },
+        { "name": "Traditional cooking experience", "description": "Learn rice & curry from a local family kitchen.", "vibes": ["cultural"] },
+        { "name": "Club nights", "description": "Ella's famous backpacker nightlife along Passara Road.", "vibes": ["adventure"] }
+      ],
+      "hotels": [
+        { "name": "98 Acres Resort & Spa", "stars": 5, "area": "Ella", "blurb": "Stunning resort facing Little Adam's Peak — infinity pool above the tea." }
+      ],
+      "businesses": []
+    },
+    {
+      "slug": "badulla",
+      "name": "Badulla",
+      "tagline": "Waterfalls off the beaten track",
+      "description": "A working hill town beyond the tourist trail — Dunhinda's misty falls, the colonial-era Bogoda wooden bridge and mountain roads made for slow travel.",
+      "image": "/images/card-badulla-highlands.jpg",
+      "order": 15,
+      "activities": [
+        { "name": "Dunhinda Falls", "description": "A 64m cascade in the mist — one of the island's most beautiful falls.", "vibes": ["adventure"] },
+        { "name": "Bogoda wooden bridge", "description": "A 400-year-old roofed wooden bridge, an engineering marvel.", "vibes": ["cultural"] },
+        { "name": "Dhowa Temple", "description": "Ancient rock temple with a 12m unfinished Buddha statue.", "vibes": ["spiritual", "cultural"] }
+      ],
+      "hotels": [],
+      "businesses": []
+    },
+    {
+      "slug": "mahiyangana",
+      "name": "Mahiyangana",
+      "tagline": "Land of the Vedda people",
+      "description": "Meet the Vedda — Sri Lanka's indigenous forest people — in their village near the Mahiyangana stupa. An authentic cultural encounter, arranged respectfully with the community.",
+      "image": "/images/bg-udawalawe-elephants.jpg",
+      "order": 16,
+      "activities": [
+        { "name": "Vedda village visit", "description": "Spend time with the indigenous community — their traditions, crafts and forest knowledge.", "vibes": ["cultural", "spiritual"] },
+        { "name": "Mahiyangana Raja Maha Vihara", "description": "One of the island's oldest stupas, marking the Buddha's first visit.", "vibes": ["spiritual", "cultural"] }
+      ],
+      "hotels": [],
+      "businesses": []
+    },
+    {
+      "slug": "kumana",
+      "name": "Kumana",
+      "tagline": "The birders' secret sanctuary",
+      "description": "A vast wetland wilderness on the east coast — one of Asia's great bird sanctuaries, where painted storks nest in their thousands and leopards pad the sand tracks.",
+      "image": "/images/card-kumana-wetland.jpg",
+      "order": 17,
+      "activities": [
+        { "name": "Kumana birdwatching safari", "description": "Black-necked storks, spoonbills and raptors in a pristine wetland park.", "vibes": ["wildlife"] }
+      ],
+      "hotels": [],
+      "businesses": []
+    },
+    {
+      "slug": "arugam-bay",
+      "name": "Arugam Bay",
+      "tagline": "Sri Lanka's surf capital",
+      "description": "A legendary right-hand point break on a lazy crescent bay. By day, world-class surf; by night, beach bars and drum circles under the palms.",
+      "image": "/images/bg-arugam-surf.jpg",
+      "order": 18,
+      "activities": [
+        { "name": "Surfing (experts)", "description": "Main Point, Whiskey Point and Pottuvil — reef breaks for experienced surfers, May to October.", "vibes": ["adventure"] },
+        { "name": "Surf lessons (beginners)", "description": "Baby Point's gentle whitewater is perfect for first-timers.", "vibes": ["adventure"] },
+        { "name": "Club nights", "description": "Beach parties and live music along the bay strip.", "vibes": ["adventure"] },
+        { "name": "Pottuvil lagoon safari", "description": "Elephants and crocodiles on a quiet mangrove lagoon.", "vibes": ["wildlife"] }
+      ],
+      "hotels": [
+        { "name": "Jetwing Surf", "stars": 4, "area": "Pottuvil Point", "blurb": "Surf-chic beach hotel right on the break.", "website": "https://www.jetwinghotels.com" }
+      ],
+      "businesses": []
+    },
+    {
+      "slug": "yala",
+      "name": "Yala",
+      "tagline": "Leopard country",
+      "description": "The island's most famous national park — the highest leopard density on earth, plus elephants, sloth bears and crocodile-filled lagoons. Add Bundala's birds and Udawalawe's elephants for the full safari circuit.",
+      "image": "/images/bg-tissa-yala-leopard.jpg",
+      "order": 19,
+      "activities": [
+        { "name": "Yala safari (full/half day)", "description": "Dawn to dusk with expert trackers — leopards, elephants, sloth bears.", "vibes": ["wildlife"] },
+        { "name": "Bundala birdwatching safari", "description": "Flamingos, pelicans and 200+ species in the coastal lagoons.", "vibes": ["wildlife"] },
+        { "name": "Udawalawe elephant safari", "description": "Guaranteed elephants — herds of 50+ around the reservoir.", "vibes": ["wildlife"] },
+        { "name": "Tissa lake boat safari", "description": "Sunset boat ride among lily pads as birds return to roost.", "vibes": ["wildlife"] },
+        { "name": "Tissamaharama Temple", "description": "An ancient stupa town on the safari circuit.", "vibes": ["spiritual", "cultural"] }
+      ],
+      "hotels": [
+        { "name": "Cinnamon Wild Yala", "stars": 5, "area": "Park boundary", "blurb": "Jungle-chic chalets where leopards roam the grounds at night.", "website": "https://www.cinnamonhotels.com" },
+        { "name": "Jetwing Yala", "stars": 5, "area": "Park boundary", "blurb": "Beach-meets-jungle luxury with a superb pool.", "website": "https://www.jetwinghotels.com" }
+      ],
+      "businesses": []
+    },
+    {
+      "slug": "bundala",
+      "name": "Bundala",
+      "tagline": "Lagoons full of wings",
+      "description": "A Ramsar wetland of lagoons and salt pans — flamingos in season, and one of the best places on earth to see greater flamingos and 200+ bird species.",
+      "image": "/images/card-bundala-heron.jpg",
+      "order": 20,
+      "activities": [
+        { "name": "Bundala birdwatching safari", "description": "Flamingos, black-necked storks and crocodiles in golden light.", "vibes": ["wildlife"] }
+      ],
+      "hotels": [],
+      "businesses": []
+    },
+    {
+      "slug": "tangalle",
+      "name": "Tangalle",
+      "tagline": "Silent beaches and turtle nights",
+      "description": "Long, empty beaches on the deep south coast — Tangalle is where the island exhales. Turtle hatcheries, blowholes and some of the finest beach resorts in the country.",
+      "image": "/images/card-galle-lighthouse.jpg",
+      "order": 21,
+      "activities": [
+        { "name": "Turtle watching", "description": "Watch green turtles nest by moonlight with conservation guides.", "vibes": ["wildlife"] },
+        { "name": "Beach days", "description": "Rekawa, Silent Beach and Goyambokka — pick your perfect crescent.", "vibes": ["adventure"] },
+        { "name": "Evening high tea", "description": "High tea with ocean views at the coast's grand hotels.", "vibes": ["cultural"] }
+      ],
+      "hotels": [
+        { "name": "Anantara Peace Haven", "stars": 5, "area": "Tangalle", "blurb": "Clifftop luxury resort on a secluded cove." }
+      ],
+      "businesses": []
+    },
+    {
+      "slug": "hiriketiya",
+      "name": "Hiriketiya",
+      "tagline": "The horseshoe bay",
+      "description": "A perfect little horseshoe of turquoise water fringed with palms — 'Hiri' is the island's coolest surf hangout, with beginner waves, beach cafes and jungle all around.",
+      "image": "/images/bg-hiriketiya-surf.jpg",
+      "order": 22,
+      "activities": [
+        { "name": "Surfing (beginners)", "description": "Gentle, consistent beach break — the island's friendliest learn-to-surf spot.", "vibes": ["adventure"] },
+        { "name": "Relaxing & sunbathing", "description": "Hammocks, coconuts and beach cafes around the bay.", "vibes": ["adventure"] },
+        { "name": "Hummanaya blowhole", "description": "The island's famous blowhole, shooting seawater 25m skyward.", "vibes": ["wildlife", "adventure"] }
+      ],
+      "hotels": [],
+      "businesses": []
+    },
+    {
+      "slug": "kirinda",
+      "name": "Kirinda",
+      "tagline": "Where turtles come ashore",
+      "description": "A quiet fishing village with a sacred rock temple offshore — and one of the island's most important sea turtle nesting beaches. Come at night, leave only footprints.",
+      "image": "/images/card-stilt-fisherman.jpg",
+      "order": 23,
+      "activities": [
+        { "name": "Sea turtle nesting watch", "description": "Guided night visits to watch turtles lay eggs — a humbling experience.", "vibes": ["wildlife"] },
+        { "name": "Kirinda temple", "description": "A tiny rock-island shrine reached by causeway.", "vibes": ["spiritual", "cultural"] }
+      ],
+      "hotels": [],
+      "businesses": []
+    },
+    {
+      "slug": "weligama",
+      "name": "Weligama",
+      "tagline": "Sandy bay, perfect waves",
+      "description": "'Sandy village' — a 3km curve of golden sand with one of the island's most consistent surf breaks. Learn here, then graduate to the reef.",
+      "image": "/images/card-surf-lesson-2.jpg",
+      "order": 24,
+      "activities": [
+        { "name": "Surfing (beginners & experts)", "description": "Beach break for learners, reef points for chargers — surf schools line the bay.", "vibes": ["adventure"] },
+        { "name": "Stilt fishermen (Ahangama)", "description": "See the iconic stilt fishermen at nearby Ahangama — and try a pole yourself.", "vibes": ["cultural"] }
+      ],
+      "hotels": [
+        { "name": "Weligama Bay Marriott Resort", "stars": 5, "area": "Weligama bay", "blurb": "Polished beachfront resort on the bay's curve." }
+      ],
+      "businesses": []
+    },
+    {
+      "slug": "mirissa",
+      "name": "Mirissa",
+      "tagline": "Coconut hills and whale seas",
+      "description": "The south coast's poster child — Coconut Tree Hill at sunset, blue whales offshore in season, and the Doctor's House when the sun goes down.",
+      "image": "/images/bg-mirissa-coconut-sunset.jpg",
+      "order": 25,
+      "activities": [
+        { "name": "Whale watching", "description": "Blue whales, sperm whales and dolphins — November to April.", "vibes": ["wildlife"] },
+        { "name": "Coconut Tree Hill", "description": "The island's most photographed viewpoint — go for sunset.", "vibes": ["adventure", "cultural"] },
+        { "name": "Snorkelling", "description": "Turtles and reef fish in the bay's clear water.", "vibes": ["wildlife", "adventure"] },
+        { "name": "Parrot Rock", "description": "A tiny island viewpoint at the harbour end of the beach.", "vibes": ["adventure"] },
+        { "name": "Club night (Doctor's House)", "description": "The famous Saturday party in a Bawa-era villa.", "vibes": ["adventure"] }
+      ],
+      "hotels": [
+        { "name": "Mandara Resort Mirissa", "stars": 4, "area": "Mirissa beach", "blurb": "Stylish beachfront resort with a popular beach club." }
+      ],
+      "businesses": []
+    },
+    {
+      "slug": "galle",
+      "name": "Galle",
+      "tagline": "The fort that time kept",
+      "description": "A 400-year-old Dutch fort filled with cafes, galleries and lighthouse views — the island's most romantic town. Stay inside the ramparts, dine on the walls at sunset.",
+      "image": "/images/bg-galle-fort.jpg",
+      "order": 26,
+      "activities": [
+        { "name": "Galle Dutch Fort walk", "description": "Ramparts, lighthouse, museums and Dutch-era streets — best at golden hour.", "vibes": ["cultural"] },
+        { "name": "Stilt fishermen's area", "description": "The iconic fishermen of Ahangama and Koggala — photos and pole-trying.", "vibes": ["cultural"] },
+        { "name": "Seafood lunch", "description": "Choose from the fort's best seafood restaurants — we book your table.", "vibes": ["cultural"] },
+        { "name": "Surfing (beginners)", "description": "Gentle breaks at nearby Dewata and Unawatuna.", "vibes": ["adventure"] },
+        { "name": "Unawatuna & Thalpe beaches", "description": "Swim, sunbathe and beach-hop the coast's prettiest bays.", "vibes": ["adventure"] },
+        { "name": "Lunuganga — Geoffrey Bawa's estate", "description": "The legendary architect's garden estate between Galle and Bentota.", "vibes": ["cultural"] },
+        { "name": "Evening high tea", "description": "High tea inside the fort with rampart views.", "vibes": ["cultural"] }
+      ],
+      "hotels": [
+        { "name": "Jetwing Lighthouse", "stars": 5, "area": "Galle", "blurb": "Bawa-designed icon on the rocks north of the fort.", "website": "https://www.jetwinghotels.com" },
+        { "name": "Fort Bazaar", "stars": 4, "area": "Inside the fort", "blurb": "Chic 17th-century merchant house turned boutique hotel." }
+      ],
+      "businesses": []
+    },
+    {
+      "slug": "bentota-beruwala",
+      "name": "Bentota & Beruwala",
+      "tagline": "Rivers, turtles and golden sand",
+      "description": "The classic beach-resort coast — wide golden beaches, the winding Madu river and turtle hatcheries. The island's easiest beach escape from Colombo.",
+      "image": "/images/card-surf-lesson-3.jpg",
+      "order": 27,
+      "activities": [
+        { "name": "Madu river safari", "description": "Boat through mangrove tunnels to cinnamon island and temple island.", "vibes": ["wildlife", "adventure"] },
+        { "name": "Sea turtle hatchery", "description": "See rescued turtles and release babies into the surf.", "vibes": ["wildlife"] },
+        { "name": "Water sports", "description": "Jet-ski, banana boat and windsurf on the Bentota river.", "vibes": ["adventure"] }
+      ],
+      "hotels": [
+        { "name": "Cinnamon Bey Beruwala", "stars": 5, "area": "Beruwala", "blurb": "Bawa-inspired beachfront resort with a huge pool.", "website": "https://www.cinnamonhotels.com" },
+        { "name": "Taj Bentota Resort & Spa", "stars": 5, "area": "Bentota", "blurb": "Palatial beach resort between river and sea.", "website": "https://www.tajhotels.com" }
+      ],
+      "businesses": []
+    },
+    {
+      "slug": "colombo",
+      "name": "Colombo",
+      "tagline": "The capital's buzzing finale",
+      "description": "End where the island buzzes loudest — Galle Face sunsets, Pettah's chaos, world-class dining and rooftop bars. One night here ties the whole journey together.",
+      "image": "/images/card-galle-lighthouse.jpg",
+      "order": 28,
+      "activities": [
+        { "name": "Galle Face Green & old fort", "description": "Sunset street food on the ocean promenade, colonial streets behind.", "vibes": ["cultural"] },
+        { "name": "Pettah market", "description": "The city's chaotic bazaar — everything from spices to electronics.", "vibes": ["cultural"] },
+        { "name": "Dining & nightlife", "description": "The island's best restaurants and rooftop bars.", "vibes": ["cultural"] }
+      ],
+      "hotels": [
+        { "name": "Cinnamon Grand Colombo", "stars": 5, "area": "Galle Road", "blurb": "The city's grand dame with 10 restaurants.", "website": "https://www.cinnamonhotels.com" },
+        { "name": "Galle Face Hotel", "stars": 4, "area": "Galle Face", "blurb": "Historic 1864 hotel facing the ocean promenade.", "website": "https://www.gallefacehotel.com" }
+      ],
+      "businesses": []
+    },
+    {
+      "slug": "ratnapura",
+      "name": "Ratnapura",
+      "tagline": "City of gems",
+      "description": "Where the island's famous sapphires come from — descend into a working gem mine, wash for stones in the river and learn why 'Ratnapura' means city of gems.",
+      "image": "/images/card-ratnapura-heritage.jpg",
+      "order": 29,
+      "activities": [
+        { "name": "Gem mine visit", "description": "Go underground in a traditional pit mine and try gem washing.", "vibes": ["cultural", "adventure"] },
+        { "name": "Gem museum", "description": "See record-breaking sapphires and learn to spot fakes.", "vibes": ["cultural"] }
+      ],
+      "hotels": [],
+      "businesses": [
+        { "name": "Ratnapura gem traders", "type": "Gem shop", "blurb": "Licensed gem merchants — every purchase certified. Arrange viewings through Ariva." }
+      ]
+    },
+    {
+      "slug": "sinharaja",
+      "name": "Sinharaja",
+      "tagline": "The last rainforest",
+      "description": "Sri Lanka's last virgin rainforest — a UNESCO wilderness of endemic birds, purple-faced monkeys and trees that have stood for centuries. Walk it with a naturalist guide.",
+      "image": "/images/card-sinharaja-rainforest.jpg",
+      "order": 30,
+      "activities": [
+        { "name": "Rainforest guided walk", "description": "Half or full day with a naturalist — endemic birds, lizards and giant trees.", "vibes": ["wildlife", "adventure"] },
+        { "name": "Birdwatching", "description": "Sri Lanka blue magpie, red-faced malkoha and 20+ endemics.", "vibes": ["wildlife"] }
+      ],
+      "hotels": [],
+      "businesses": []
+    }
+  ],
+  "guides": [
+    {
+      "id": "naveen",
+      "name": "Naveen",
+      "role": "Founder · Chauffeur-Guide",
+      "languages": ["English", "Sinhala"],
+      "specialties": ["Cultural triangle", "Wildlife safaris", "Custom itineraries"],
+      "years": 8,
+      "rating": 4.9,
+      "tours": 320,
+      "photo": "/images/bg-guides-safari.jpg",
+      "bio": "Born into Sri Lanka's tourism heartland, Naveen has spent 8 years crafting journeys guests remember for life. He plans every Ariva itinerary personally.",
+      "reviews": [
+        { "author": "Sophie M.", "country": "Germany", "rating": 5, "text": "Naveen turned our 10 days into the trip of a lifetime. Every hotel, every stop — perfect." },
+        { "author": "James & Priya", "country": "UK", "rating": 5, "text": "Knowledgeable, funny and always on time. The Yala safari he arranged was unreal." }
+      ]
+    },
+    {
+      "id": "chamara",
+      "name": "Chamara",
+      "role": "Surf & Adventure Guide",
+      "languages": ["English", "Sinhala"],
+      "specialties": ["Surf coaching", "Arugam Bay", "Down-south coast"],
+      "years": 6,
+      "rating": 4.8,
+      "tours": 210,
+      "photo": "/images/bg-arugam-surf.jpg",
+      "bio": "A former competitive surfer who has ridden every break on the island. Chamara gets beginners standing in a day and takes experts to secret spots.",
+      "reviews": [
+        { "author": "Lukas", "country": "Switzerland", "rating": 5, "text": "Had me standing on day one. Knows the coast like the back of his hand." }
+      ]
+    },
+    {
+      "id": "priyantha",
+      "name": "Priyantha",
+      "role": "Wildlife Safari Driver",
+      "languages": ["English", "Sinhala", "Tamil"],
+      "specialties": ["Yala leopards", "Birdwatching", "Photography tours"],
+      "years": 10,
+      "rating": 5.0,
+      "tours": 450,
+      "photo": "/images/bg-tissa-yala-leopard.jpg",
+      "bio": "Ten years tracking leopards in Yala and Wilpattu. Priyantha's eyes spot what cameras miss — photographers specifically request him.",
+      "reviews": [
+        { "author": "Emma R.", "country": "Australia", "rating": 5, "text": "Three leopards in one morning. Priyantha is simply the best tracker we've met." }
+      ]
+    }
+  ],
+  "testimonials": [
+    { "author": "Sophie M.", "country": "Germany", "rating": 5, "text": "Naveen turned our 10 days into the trip of a lifetime. Every hotel, every stop — perfect.", "source": "Google" },
+    { "author": "James & Priya", "country": "UK", "rating": 5, "text": "The customiser made planning fun — we picked our places and the price just updated. Brilliant.", "source": "TripAdvisor" },
+    { "author": "Emma R.", "country": "Australia", "rating": 5, "text": "Three leopards in one morning in Yala. Our guide Priyantha is simply the best tracker we've met.", "source": "Google" },
+    { "author": "Lukas", "country": "Switzerland", "rating": 5, "text": "Surf, safari and culture in 12 days. Ariva handled everything — we just enjoyed.", "source": "TripAdvisor" }
+  ],
+  "businesses": [
+    { "name": "Kandy gem museum", "type": "Gem shop · Kandy", "blurb": "Certified Ceylon sapphires with a museum tour. Book viewings through Ariva." },
+    { "name": "Ratnapura gem traders", "type": "Gem shop · Ratnapura", "blurb": "Licensed merchants at the source. Every stone certified." },
+    { "name": "Matale spice gardens", "type": "Spice garden · Matale", "blurb": "Family-run gardens — tours, tastings and Ayurvedic products." },
+    { "name": "Kandy wood carving centre", "type": "Craft centre · Kandy", "blurb": "Traditional masks and sculptures carved before your eyes." },
+    { "name": "Sigiriya silk factory", "type": "Craft centre · Sigiriya", "blurb": "Silk weaving and the saree experience." }
+  ],
+  "faqs": [
+    {"q": "How does the price work when I customise?", "a": "You only ever see one total price, shown in your own currency. Add or remove destinations and activities and the total recalculates instantly — individual activity prices are never displayed." },
+    {"q": "Can I choose my own guide?", "a": "Yes. Every Ariva guide has a public profile with real guest reviews. Pick your favourite when you book, and we'll confirm availability." },
+    {"q": "How do hotel choices work per tier?", "a": "Silver travellers choose from 4+ handpicked hotels per destination, Gold from 5 proposed 5-star hotels, and Platinum from 10+ luxury properties. Every hotel links to its own website so you can browse before you decide." },
+    {"q": "What languages do you support?", "a": "Our site is in English, and we'll suggest your language based on your country — you choose whether to switch. Our guides speak English plus German, French, Chinese, Russian and more on request." },
+    {"q": "How do I book?", "a": "Build your journey in the trip customiser, then send it to us. We call you back to fine-tune every detail before anything is confirmed — no payment is taken online." }
+  ]
+}
