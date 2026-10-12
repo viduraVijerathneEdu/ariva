@@ -11,6 +11,7 @@ import type {
 } from "../data/types";
 import { useSite } from "../lib/site";
 import { estimateTotal, type TierId } from "../lib/pricing";
+import Reveal from "./Reveal";
 
 const content = raw as unknown as SiteContent;
 
@@ -157,22 +158,25 @@ export default function Builder() {
       setForm((f) => ({ ...f, [field]: e.target.value }));
 
   return (
-    <section id="plan" className="bg-cream py-24">
+    <section id="plan" className="bg-cream py-24 scroll-mt-20">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <p className="text-sm font-medium uppercase tracking-[0.25em] text-gold">
-          Trip customiser
-        </p>
-        <h2 className="mt-3 font-display text-4xl text-ink sm:text-5xl">
-          Build your journey
-        </h2>
-        <p className="mt-4 max-w-2xl text-ink/65">
-          Pick a tier, tell us your days, choose places and activities. One
-          total price — individual activity prices are never shown.
-        </p>
+        <Reveal>
+          <p className="text-sm font-medium uppercase tracking-[0.25em] text-gold">
+            Trip customiser
+          </p>
+          <h2 className="mt-3 font-display text-4xl text-ink sm:text-5xl">
+            Build your journey
+          </h2>
+          <p className="mt-4 max-w-2xl text-ink/65">
+            Pick a tier, tell us your days, choose places and activities. One
+            total price — individual activity prices are never shown.
+          </p>
+        </Reveal>
 
         <div className="mt-12 grid gap-10 lg:grid-cols-3">
           <div className="space-y-12 lg:col-span-2">
             {/* Step 1 — Tier */}
+            <Reveal>
             <div>
               <StepHeading n={1} title="Choose your tier" />
               <div className="grid gap-4 sm:grid-cols-3">
@@ -196,8 +200,10 @@ export default function Builder() {
                 })}
               </div>
             </div>
+            </Reveal>
 
             {/* Step 2 — Days */}
+            <Reveal>
             <div>
               <StepHeading n={2} title="How many days?" />
               <div className="flex items-center gap-6">
@@ -215,8 +221,10 @@ export default function Builder() {
                 </span>
               </div>
             </div>
+            </Reveal>
 
             {/* Step 3 — Destinations */}
+            <Reveal>
             <div>
               <StepHeading
                 n={3}
@@ -254,8 +262,10 @@ export default function Builder() {
                 })}
               </div>
             </div>
+            </Reveal>
 
             {/* Step 4 — Activities */}
+            <Reveal>
             <div>
               <StepHeading
                 n={4}
@@ -319,9 +329,11 @@ export default function Builder() {
                 </div>
               )}
             </div>
+            </Reveal>
           </div>
 
           {/* Step 5 — Summary */}
+          <Reveal>
           <div>
             <div className="rounded-2xl bg-ink p-6 text-cream lg:sticky lg:top-24">
               <h3 className="font-display text-2xl text-goldlight">
@@ -435,6 +447,7 @@ export default function Builder() {
               )}
             </div>
           </div>
+          </Reveal>
         </div>
       </div>
     </section>

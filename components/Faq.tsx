@@ -3,6 +3,7 @@
 import { useState } from "react";
 import raw from "../data/content.json";
 import type { SiteContent } from "../data/types";
+import Reveal from "./Reveal";
 
 const content = raw as unknown as SiteContent;
 
@@ -10,20 +11,23 @@ export default function Faq() {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 
   return (
-    <section id="faq" className="bg-cream py-24">
+    <section id="faq" className="scroll-mt-20 bg-cream py-24">
       <div className="mx-auto max-w-3xl px-6">
-        <p className="text-gold text-xs font-semibold uppercase tracking-[0.3em]">
+        <Reveal>
+<p className="text-gold text-xs font-semibold uppercase tracking-[0.3em]">
           Good to know
         </p>
         <h2 className="font-display text-4xl md:text-5xl text-ink mt-3">
           Questions, answered
         </h2>
+        </Reveal>
 
         <div className="mt-10 divide-y divide-ink/10 border-y border-ink/10">
           {content.faqs.map((f, i) => {
             const open = openIndex === i;
             return (
-              <div key={i}>
+              <Reveal key={i}>
+              <div>
                 <button
                   type="button"
                   onClick={() => setOpenIndex(open ? null : i)}
@@ -50,6 +54,7 @@ export default function Faq() {
                   </div>
                 </div>
               </div>
+              </Reveal>
             );
           })}
         </div>

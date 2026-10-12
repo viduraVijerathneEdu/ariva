@@ -3,6 +3,7 @@
 import { useMemo, useState } from "react";
 import raw from "../data/content.json";
 import type { SiteContent, Hotel } from "../data/types";
+import Reveal from "./Reveal";
 
 const content = raw as unknown as SiteContent;
 
@@ -103,9 +104,10 @@ export default function Stays() {
   );
 
   return (
-    <section id="stays" className="bg-sand py-24">
+    <section id="stays" className="scroll-mt-20 bg-sand py-24">
       <div className="mx-auto max-w-7xl px-6">
-        <p className="text-gold text-xs font-semibold uppercase tracking-[0.3em]">
+        <Reveal>
+<p className="text-gold text-xs font-semibold uppercase tracking-[0.3em]">
           Stays
         </p>
         <h2 className="font-display text-4xl md:text-5xl text-ink mt-3">
@@ -115,6 +117,7 @@ export default function Stays() {
           Places we know personally — the bed, the breakfast and the view all
           checked by an Ariva guide. Pick your own or let your tier decide.
         </p>
+        </Reveal>
 
         <div className="flex flex-wrap gap-4 mt-8">
           <label className="flex items-center gap-3 text-sm text-ink/70">
@@ -149,8 +152,10 @@ export default function Stays() {
 
         {filtered.length > 0 ? (
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mt-10">
-            {filtered.map((h) => (
-              <HotelCard key={h.name} hotel={h} destName={h.destName} />
+            {filtered.map((h, i) => (
+              <Reveal key={h.name} delay={(i % 3) * 80}>
+                <HotelCard hotel={h} destName={h.destName} />
+              </Reveal>
             ))}
           </div>
         ) : (

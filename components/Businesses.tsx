@@ -1,13 +1,15 @@
 import raw from "../data/content.json";
 import type { SiteContent } from "../data/types";
+import Reveal from "./Reveal";
 
 const content = raw as unknown as SiteContent;
 
 export default function Businesses() {
   return (
-    <section id="businesses" className="bg-cream py-24">
+    <section id="businesses" className="scroll-mt-20 bg-cream py-24">
       <div className="mx-auto max-w-7xl px-6">
-        <p className="text-gold text-xs font-semibold uppercase tracking-[0.3em]">
+        <Reveal>
+<p className="text-gold text-xs font-semibold uppercase tracking-[0.3em]">
           Community
         </p>
         <h2 className="font-display text-4xl md:text-5xl text-ink mt-3">
@@ -17,12 +19,13 @@ export default function Businesses() {
           The gem cutters, spice growers and craftspeople who make Sri Lanka
           special — Ariva travellers meet them face to face.
         </p>
+        </Reveal>
 
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-12">
-          {content.businesses.map((b) => (
+          {content.businesses.map((b, i) => (
+            <Reveal key={b.name} delay={(i % 3) * 80}>
             <article
-              key={b.name}
-              className="bg-sand rounded-2xl border border-ink/10 p-6"
+              className="lift bg-sand rounded-2xl border border-ink/10 p-6 h-full"
             >
               <p className="text-xs uppercase tracking-widest text-gold font-semibold">
                 {b.type}
@@ -32,6 +35,7 @@ export default function Businesses() {
                 {b.blurb}
               </p>
             </article>
+            </Reveal>
           ))}
         </div>
 

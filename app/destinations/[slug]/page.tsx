@@ -4,6 +4,7 @@ import type { Metadata } from "next";
 import raw from "../../../data/content.json";
 import type { SiteContent } from "../../../data/types";
 import { HotelCard } from "../../../components/Stays";
+import Reveal from "../../../components/Reveal";
 
 const content = raw as unknown as SiteContent;
 
@@ -74,13 +75,15 @@ export default async function DestinationPage({
 
             {dest.gallery && dest.gallery.length > 0 && (
               <>
-                <h2 className="font-display text-3xl text-ink mt-12">
-                  Moments from {dest.name}
-                </h2>
+                <Reveal>
+                  <h2 className="font-display text-3xl text-ink mt-12">
+                    Moments from {dest.name}
+                  </h2>
+                </Reveal>
                 <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 mt-6">
-                  {dest.gallery.map((src) => (
+                  {dest.gallery.map((src, i) => (
+                    <Reveal key={src} delay={(i % 3) * 80}>
                     <div
-                      key={src}
                       className="relative aspect-[4/3] overflow-hidden rounded-2xl group"
                     >
                       <Image
@@ -91,17 +94,22 @@ export default async function DestinationPage({
                         className="object-cover transition-transform duration-700 group-hover:scale-105"
                       />
                     </div>
+                    </Reveal>
                   ))}
                 </div>
               </>
             )}
 
-            <h2 className="font-display text-3xl text-ink mt-12">Experiences</h2>
+            <Reveal>
+              <h2 className="font-display text-3xl text-ink mt-12">
+                Experiences
+              </h2>
+            </Reveal>
             <div className="grid sm:grid-cols-2 gap-5 mt-6">
-              {dest.activities.map((a) => (
+              {dest.activities.map((a, i) => (
+                <Reveal key={a.name} delay={(i % 2) * 90}>
                 <article
-                  key={a.name}
-                  className="bg-sand rounded-2xl border border-ink/10 p-5"
+                  className="lift bg-sand rounded-2xl border border-ink/10 p-5 h-full"
                 >
                   <h3 className="font-semibold text-ink">{a.name}</h3>
                   <p className="text-sm text-ink/60 leading-relaxed mt-2">
@@ -118,14 +126,17 @@ export default async function DestinationPage({
                     ))}
                   </div>
                 </article>
+                </Reveal>
               ))}
             </div>
 
             {dest.hotels.length > 0 && (
               <>
-                <h2 className="font-display text-3xl text-ink mt-12">
-                  Where to stay
-                </h2>
+                <Reveal>
+                  <h2 className="font-display text-3xl text-ink mt-12">
+                    Where to stay
+                  </h2>
+                </Reveal>
                 <div className="grid sm:grid-cols-2 gap-5 mt-6">
                   {dest.hotels.map((h) => (
                     <HotelCard key={h.name} hotel={h} />
@@ -136,9 +147,11 @@ export default async function DestinationPage({
 
             {dest.businesses.length > 0 && (
               <>
-                <h2 className="font-display text-3xl text-ink mt-12">
-                  Local businesses
-                </h2>
+                <Reveal>
+                  <h2 className="font-display text-3xl text-ink mt-12">
+                    Local businesses
+                  </h2>
+                </Reveal>
                 <ul className="mt-6 space-y-4">
                   {dest.businesses.map((b) => (
                     <li
@@ -161,6 +174,7 @@ export default async function DestinationPage({
 
           {/* Aside */}
           <aside>
+            <Reveal>
             <div className="sticky top-24 bg-ink text-cream rounded-2xl p-6">
               <h2 className="font-display text-2xl">Journeys that fit</h2>
               <ul className="mt-4 space-y-4">
@@ -182,6 +196,7 @@ export default async function DestinationPage({
                 Add to my trip
               </a>
             </div>
+            </Reveal>
           </aside>
         </div>
       </section>

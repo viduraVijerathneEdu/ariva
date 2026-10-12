@@ -4,6 +4,7 @@ import { useState } from "react";
 import Image from "next/image";
 import raw from "../data/content.json";
 import type { SiteContent } from "../data/types";
+import Reveal from "./Reveal";
 
 const content = raw as unknown as SiteContent;
 
@@ -93,9 +94,10 @@ function GuideSignup() {
 
 export default function Guides() {
   return (
-    <section id="guides" className="bg-cream py-24">
+    <section id="guides" className="scroll-mt-20 bg-cream py-24">
       <div className="mx-auto max-w-7xl px-6">
-        <p className="text-gold text-xs font-semibold uppercase tracking-[0.3em]">
+        <Reveal>
+<p className="text-gold text-xs font-semibold uppercase tracking-[0.3em]">
           Guides
         </p>
         <h2 className="font-display text-4xl md:text-5xl text-ink mt-3">
@@ -105,12 +107,13 @@ export default function Guides() {
           Every Ariva guide has a public profile. Pick your favourite when you
           book — your guide builds their own reputation here.
         </p>
+        </Reveal>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mt-12">
-          {content.guides.map((g) => (
+          {content.guides.map((g, i) => (
+            <Reveal key={g.id} delay={(i % 3) * 100}>
             <article
-              key={g.id}
-              className="bg-sand rounded-2xl border border-ink/10 overflow-hidden"
+              className="lift bg-sand rounded-2xl border border-ink/10 overflow-hidden h-full"
             >
               <div className="relative aspect-[4/3]">
                 <Image
@@ -175,6 +178,7 @@ export default function Guides() {
                 )}
               </div>
             </article>
+            </Reveal>
           ))}
         </div>
 

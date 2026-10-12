@@ -6,6 +6,7 @@ import raw from "../data/content.json";
 import type { SiteContent, TierInfo, Vibe, VibePackage } from "../data/types";
 import { useSite } from "../lib/site";
 import { estimateFrom, type TierId } from "../lib/pricing";
+import Reveal from "./Reveal";
 
 const content = raw as unknown as SiteContent;
 
@@ -126,37 +127,41 @@ function VibeDetail({ vibe }: { vibe: VibePackage }) {
   if (vibe.comingSoon) return <ComingSoonCard vibe={vibe} />;
   return (
     <div className="grid gap-10 lg:grid-cols-2">
-      <div>
-        <div className="relative aspect-[4/3] overflow-hidden rounded-2xl">
-          <Image
-            src={vibe.image}
-            alt={vibe.name}
-            fill
-            className="object-cover"
-            sizes="(max-width: 1024px) 100vw, 50vw"
-          />
+      <Reveal>
+        <div>
+          <div className="relative aspect-[4/3] overflow-hidden rounded-2xl">
+            <Image
+              src={vibe.image}
+              alt={vibe.name}
+              fill
+              className="object-cover"
+              sizes="(max-width: 1024px) 100vw, 50vw"
+            />
+          </div>
+          {vibe.includesCoastal && (
+            <span className="mt-4 inline-block rounded-full border border-gold/40 bg-gold/10 px-4 py-1 text-xs font-medium tracking-wide text-goldlight">
+              Includes coastal escapes
+            </span>
+          )}
+          <p className="mt-4 leading-relaxed text-cream/75">{vibe.description}</p>
+          <h4 className="mt-8 font-display text-xl text-goldlight">
+            Sample moments
+          </h4>
+          <ul className="mt-4 space-y-2.5">
+            {vibe.sampleItinerary.map((item) => (
+              <li key={item} className="flex items-start gap-3">
+                <Check className="mt-0.5 h-5 w-5 shrink-0 text-gold" />
+                <span className="text-cream/80">{item}</span>
+              </li>
+            ))}
+          </ul>
         </div>
-        {vibe.includesCoastal && (
-          <span className="mt-4 inline-block rounded-full border border-gold/40 bg-gold/10 px-4 py-1 text-xs font-medium tracking-wide text-goldlight">
-            Includes coastal escapes
-          </span>
-        )}
-        <p className="mt-4 leading-relaxed text-cream/75">{vibe.description}</p>
-        <h4 className="mt-8 font-display text-xl text-goldlight">
-          Sample moments
-        </h4>
-        <ul className="mt-4 space-y-2.5">
-          {vibe.sampleItinerary.map((item) => (
-            <li key={item} className="flex items-start gap-3">
-              <Check className="mt-0.5 h-5 w-5 shrink-0 text-gold" />
-              <span className="text-cream/80">{item}</span>
-            </li>
-          ))}
-        </ul>
-      </div>
+      </Reveal>
       <div className="grid content-start gap-6 sm:grid-cols-1 xl:grid-cols-1">
-        {content.tiers.map((tier) => (
-          <TierCard key={tier.id} tier={tier} />
+        {content.tiers.map((tier, i) => (
+          <Reveal key={tier.id} delay={i * 100}>
+            <TierCard tier={tier} />
+          </Reveal>
         ))}
         <button
           onClick={() => {
@@ -181,17 +186,19 @@ export default function Packages() {
   const vibe = content.vibes.find((v) => v.id === activeVibe) ?? content.vibes[0];
 
   return (
-    <section id="packages" className="bg-ink py-24 text-cream">
+    <section id="packages" className="bg-ink py-24 text-cream scroll-mt-20">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <p className="text-sm font-medium uppercase tracking-[0.25em] text-gold">
-          Journeys
-        </p>
-        <h2 className="mt-3 font-display text-4xl text-cream sm:text-5xl">
-          Choose your Sri Lanka experience
-        </h2>
-        <p className="mt-4 max-w-2xl text-cream/65">
-          Five ways to travel — each in Silver, Gold or Platinum.
-        </p>
+        <Reveal>
+          <p className="text-sm font-medium uppercase tracking-[0.25em] text-gold">
+            Journeys
+          </p>
+          <h2 className="mt-3 font-display text-4xl text-cream sm:text-5xl">
+            Choose your Sri Lanka experience
+          </h2>
+          <p className="mt-4 max-w-2xl text-cream/65">
+            Five ways to travel — each in Silver, Gold or Platinum.
+          </p>
+        </Reveal>
 
         <div className="mt-8 flex flex-wrap gap-3">
           {content.vibes.map((v) => {
