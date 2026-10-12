@@ -71,9 +71,30 @@ export default async function DestinationPage({
             <p className="text-ink/70 leading-relaxed text-lg">
               {dest.description}
             </p>
-            <p className="text-sm text-ink/50 mt-4">
-              {dest.driveFromAirport} from the airport
-            </p>
+
+            {dest.gallery && dest.gallery.length > 0 && (
+              <>
+                <h2 className="font-display text-3xl text-ink mt-12">
+                  Moments from {dest.name}
+                </h2>
+                <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 mt-6">
+                  {dest.gallery.map((src) => (
+                    <div
+                      key={src}
+                      className="relative aspect-[4/3] overflow-hidden rounded-2xl group"
+                    >
+                      <Image
+                        src={src}
+                        alt={`${dest.name} — guest photo`}
+                        fill
+                        sizes="(max-width: 640px) 50vw, 33vw"
+                        className="object-cover transition-transform duration-700 group-hover:scale-105"
+                      />
+                    </div>
+                  ))}
+                </div>
+              </>
+            )}
 
             <h2 className="font-display text-3xl text-ink mt-12">Experiences</h2>
             <div className="grid sm:grid-cols-2 gap-5 mt-6">

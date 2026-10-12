@@ -28,6 +28,7 @@ export interface Destination {
   image: string;
   order: number;
   driveFromAirport: string;
+  gallery?: string[];
   activities: Activity[];
   hotels: Hotel[];
   businesses: Business[];

@@ -3,6 +3,7 @@ import "./globals.css";
 import { SiteProvider, LanguageSuggest } from "../lib/site";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
+import Preloader from "../components/Preloader";
 
 export const metadata: Metadata = {
   title: "Ariva Travel — Sri Lanka, made personal",
@@ -31,6 +32,7 @@ export default function RootLayout({
       </head>
       <body>
         <SiteProvider>
+          <Preloader />
           <Header />
           {children}
           <Footer />
