@@ -122,6 +122,31 @@ a {
   text-shadow: 0 0 2.2rem rgba(185, 255, 102, 0.13);
 }
 
+.preloader__progress {
+  z-index: 1;
+  width: min(16rem, 56vw);
+  height: 2px;
+  margin-top: 1.7rem;
+  overflow: hidden;
+  border-radius: 999px;
+  background: rgba(244, 247, 239, 0.14);
+}
+
+.preloader__progress-bar {
+  height: 100%;
+  border-radius: inherit;
+  background: linear-gradient(90deg, #b9ff66, #e8ffb0);
+  transition: width 0.25s ease-out;
+}
+
+.preloader__percent {
+  z-index: 1;
+  margin-top: 0.7rem;
+  color: rgba(244, 247, 239, 0.55);
+  font-size: 0.72rem;
+  letter-spacing: 0.22em;
+}
+
 .sequence {
   --full-progress: 0;
   --hero-progress: 0;

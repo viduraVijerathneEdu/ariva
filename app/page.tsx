@@ -171,6 +171,38 @@ const yapahuwaActivities = [
   },
 ];
 
+type LoadProgressListener = (done: number, total: number) => void;
+
+// Global image-load tracker for the preloader. Sequences opt in via
+// `trackInPreloader`; every eager <img> in the document is tracked too.
+// The preloader hides only once every tracked image has loaded or errored.
+const imageLoadTracker = {
+  total: 0,
+  done: 0,
+  listeners: new Set<LoadProgressListener>(),
+  addTotal(n: number) {
+    this.total += n;
+    this.emit();
+  },
+  addDone(n = 1) {
+    this.done = Math.min(this.total, this.done + n);
+    this.emit();
+  },
+  subscribe(fn: LoadProgressListener) {
+    this.listeners.add(fn);
+    fn(this.done, this.total);
+    return () => {
+      this.listeners.delete(fn);
+    };
+  },
+  emit() {
+    this.listeners.forEach((fn) => fn(this.done, this.total));
+  },
+  get isComplete() {
+    return this.total > 0 && this.done >= this.total;
+  },
+};
+
 type SequenceOptions = {
   canvasRef: RefObject<HTMLCanvasElement | null>;
   deferUntilProgress?: number;
@@ -181,6 +213,7 @@ type SequenceOptions = {
   progressProperty?: string;
   progressStart?: number;
   sectionRef: RefObject<HTMLElement | null>;
+  trackInPreloader?: boolean;
   useFullProgress?: boolean;
 };
 
@@ -194,12 +227,14 @@ function useImageSequence({
   progressProperty = "--scroll-progress",
   progressStart = 0,
   sectionRef,
+  trackInPreloader = false,
   useFullProgress = false,
 }: SequenceOptions) {
   const framesRef = useRef<Array<HTMLImageElement | undefined>>([]);
   const currentFrameRef = useRef(0);
   const renderedFrameRef = useRef(-1);
   const frameRequestRef = useRef<number | null>(null);
+  const trackedTotalRef = useRef(false);
 
   const drawFrame = useCallback(
     (requestedIndex: number) => {
@@ -247,12 +282,21 @@ function useImageSequence({
     let cancelled = false;
     let loadingStarted = false;
 
+    if (trackInPreloader && !trackedTotalRef.current) {
+      trackedTotalRef.current = true;
+      imageLoadTracker.addTotal(frameCount);
+    }
+
     const firstFrame = new window.Image();
     firstFrame.decoding = "async";
     framesRef.current[0] = firstFrame;
     firstFrame.onload = () => {
+      if (trackInPreloader) imageLoadTracker.addDone(1);
       drawFrame(0);
       onFirstFrameReady?.();
+    };
+    firstFrame.onerror = () => {
+      if (trackInPreloader) imageLoadTracker.addDone(1);
     };
     firstFrame.src = frameSource(0);
 
@@ -263,10 +307,14 @@ function useImageSequence({
       image.decoding = "async";
       framesRef.current[index] = image;
       image.onload = () => {
+        if (trackInPreloader) imageLoadTracker.addDone(1);
         if (index === currentFrameRef.current) drawFrame(index);
         loadNext();
       };
-      image.onerror = loadNext;
+      image.onerror = () => {
+        if (trackInPreloader) imageLoadTracker.addDone(1);
+        loadNext();
+      };
       image.src = frameSource(index);
     };
 
@@ -329,6 +377,7 @@ function useImageSequence({
     frameSource,
     onFirstFrameReady,
     sectionRef,
+    trackInPreloader,
     useFullProgress,
   ]);
 
@@ -400,7 +449,7 @@ function useImageSequence({
 
 type HeroProps = {
   isVisible: boolean;
-  onFirstFrameReady: () => void;
+  onFirstFrameReady?: () => void;
 };
 
 function JourneySequence({ isVisible, onFirstFrameReady }: HeroProps) {
@@ -417,6 +466,7 @@ function JourneySequence({ isVisible, onFirstFrameReady }: HeroProps) {
     progressEnd: 0.216,
     progressProperty: "--hero-progress",
     sectionRef,
+    trackInPreloader: true,
   });
 
   useImageSequence({
@@ -606,6 +656,7 @@ function JourneyChapter({ chapter }: { chapter: ChapterData }) {
               src={chapter.card.image}
               alt={chapter.card.alt}
               fill
+              priority
               sizes="(max-width: 768px) 90vw, 38rem"
             />
             <div className="destination-card__shade" />
@@ -1216,6 +1267,7 @@ function DestinationsOverlay({
                 src={destination.image}
                 alt={destination.alt}
                 fill
+                priority
                 sizes="(max-width: 768px) 100vw, 40vw"
               />
               <div className="destination-card__shade" />
@@ -1335,6 +1387,7 @@ function KitulgalaActivityOverlay({
           src={kitulgalaFrameSource(140)}
           alt="White-water rafting through the rainforest in Kitulgala"
           fill
+          priority
           sizes="100vw"
         />
         <div className="destination-card__shade" />
@@ -1468,6 +1521,7 @@ function YapahuwaActivitiesOverlay({
               src={activity.image}
               alt={activity.alt}
               fill
+              priority
               sizes="(max-width: 768px) 100vw, 40vw"
             />
             <div className="destination-card__shade" />
@@ -1495,7 +1549,13 @@ function YapahuwaActivitiesOverlay({
               spotlightRefs.current[index] = node;
             }}
           >
-            <Image src={activity.image} alt="" fill sizes="100vw" />
+            <Image
+              src={activity.image}
+              alt=""
+              fill
+              priority
+              sizes="100vw"
+            />
             <div className="destination-card__shade" />
             <span>{String(index + 1).padStart(2, "0")}</span>
             <div>
@@ -1513,7 +1573,17 @@ function YapahuwaActivitiesOverlay({
   );
 }
 
-function Preloader({ exiting }: { exiting: boolean }) {
+function Preloader({
+  exiting,
+  progress,
+}: {
+  exiting: boolean;
+  progress: { done: number; total: number };
+}) {
+  const percent =
+    progress.total > 0
+      ? Math.min(100, Math.round((progress.done / progress.total) * 100))
+      : 0;
   return (
     <div
       className={`preloader${exiting ? " preloader--exiting" : ""}`}
@@ -1526,44 +1596,81 @@ function Preloader({ exiting }: { exiting: boolean }) {
         <span>Welcome to</span>
         <strong>Ariva</strong>
       </div>
+      <div className="preloader__progress" aria-hidden="true">
+        <div
+          className="preloader__progress-bar"
+          style={{ width: `${percent}%` }}
+        />
+      </div>
+      <p className="preloader__percent">{percent}%</p>
     </div>
   );
 }
 
 export default function App() {
-  const [firstFrameReady, setFirstFrameReady] = useState(false);
-  const [minimumTimePassed, setMinimumTimePassed] = useState(false);
+  const [loadProgress, setLoadProgress] = useState({ done: 0, total: 0 });
+  const [allImagesReady, setAllImagesReady] = useState(false);
   const [preloaderState, setPreloaderState] = useState<
     "visible" | "exiting" | "hidden"
   >("visible");
 
   useEffect(() => {
-    const timer = window.setTimeout(() => setMinimumTimePassed(true), 3400);
-    return () => window.clearTimeout(timer);
+    // Track every eager <img> in the document. Capture phase catches the
+    // resource load/error events, which don't bubble.
+    const seen = new WeakSet<HTMLImageElement>();
+    const registerImg = (img: HTMLImageElement, alreadyDone: boolean) => {
+      if (seen.has(img)) return;
+      seen.add(img);
+      imageLoadTracker.addTotal(1);
+      if (alreadyDone) imageLoadTracker.addDone(1);
+    };
+    // Initial sweep: only non-lazy images gate the preloader.
+    document
+      .querySelectorAll<HTMLImageElement>('img:not([loading="lazy"])')
+      .forEach((img) => {
+        registerImg(img, img.complete);
+      });
+    const onResourceEvent = (e: Event) => {
+      const target = e.target as HTMLElement | null;
+      if (!target || target.tagName !== "IMG") return;
+      const img = target as HTMLImageElement;
+      if (seen.has(img)) {
+        imageLoadTracker.addDone(1);
+      } else {
+        registerImg(img, true);
+      }
+    };
+    document.addEventListener("load", onResourceEvent, true);
+    document.addEventListener("error", onResourceEvent, true);
+    const unsubscribe = imageLoadTracker.subscribe((done, total) => {
+      setLoadProgress({ done, total });
+      if (total > 0 && done >= total) setAllImagesReady(true);
+    });
+    // Failsafe: never trap the visitor behind the preloader.
+    const failsafe = window.setTimeout(() => setAllImagesReady(true), 60000);
+    return () => {
+      document.removeEventListener("load", onResourceEvent, true);
+      document.removeEventListener("error", onResourceEvent, true);
+      unsubscribe();
+      window.clearTimeout(failsafe);
+    };
   }, []);
 
   useEffect(() => {
-    if (!firstFrameReady || !minimumTimePassed) return;
+    if (!allImagesReady) return;
     setPreloaderState("exiting");
     const timer = window.setTimeout(() => setPreloaderState("hidden"), 900);
     return () => window.clearTimeout(timer);
-  }, [firstFrameReady, minimumTimePassed]);
+  }, [allImagesReady]);
 
   useEffect(() => {
     document.body.classList.toggle("is-loading", preloaderState !== "hidden");
     return () => document.body.classList.remove("is-loading");
   }, [preloaderState]);
 
-  const handleFirstFrameReady = useCallback(() => {
-    setFirstFrameReady(true);
-  }, []);
-
   return (
     <main>
-      <JourneySequence
-        isVisible={preloaderState !== "visible"}
-        onFirstFrameReady={handleFirstFrameReady}
-      />
+      <JourneySequence isVisible={preloaderState !== "visible"} />
       {journeyChapters.map((chapter) => (
         <JourneyChapter key={chapter.id} chapter={chapter} />
       ))}
@@ -1576,7 +1683,10 @@ export default function App() {
         </span>
       </section>
       {preloaderState !== "hidden" && (
-        <Preloader exiting={preloaderState === "exiting"} />
+        <Preloader
+          exiting={preloaderState === "exiting"}
+          progress={loadProgress}
+        />
       )}
     </main>
   );
