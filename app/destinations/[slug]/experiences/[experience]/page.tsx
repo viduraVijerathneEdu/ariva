@@ -51,6 +51,36 @@ export default async function ExperiencePage({
   const act = dest?.activities.find((a) => slugify(a.name) === experience);
   if (!dest || !act) notFound();
 
+  // Gallery: the destination's own photos first, then photos from
+  // destinations sharing this activity's vibes, so every experience
+  // page has a gallery even when the destination itself has few photos.
+  const galleryPool: string[] = [];
+  const pushUnique = (src: string) => {
+    if (src && !galleryPool.includes(src)) galleryPool.push(src);
+  };
+  (dest.gallery ?? []).forEach(pushUnique);
+  const actVibes = new Set(act.vibes);
+  const similar = content.destinations
+    .filter((d) => d.slug !== dest.slug)
+    .map((d) => ({
+      d,
+      overlap: d.activities.reduce(
+        (n, a) => n + a.vibes.filter((v) => actVibes.has(v)).length,
+        0
+      ),
+    }))
+    .filter((x) => x.overlap > 0)
+    .sort((a, b) => b.overlap - a.overlap);
+  for (const { d } of similar) {
+    pushUnique(d.image);
+    (d.gallery ?? []).forEach(pushUnique);
+    if (galleryPool.length >= 5) break;
+  }
+  const gallery = galleryPool.slice(0, 5);
+  const galleryAllOwn =
+    gallery.length > 0 &&
+    gallery.every((src) => (dest.gallery ?? []).includes(src));
+
   return (
     <main>
       {/* Hero */}
@@ -110,30 +140,31 @@ export default async function ExperiencePage({
               ))}
             </div>
 
-            {dest.gallery && dest.gallery.length > 0 && (
+            {gallery.length > 0 && (
               <>
                 <Reveal>
                   <h2 className="font-display text-3xl text-ink mt-12">
-                    Moments from {dest.name}
+                    {galleryAllOwn
+                      ? `Moments from ${dest.name}`
+                      : "Moments from Sri Lanka"}
                   </h2>
                   <p className="text-sm text-ink/60 mt-2">
-                    Scenes from around {dest.name} — the landscapes, light
-                    and life this experience moves through.
+                    {galleryAllOwn
+                      ? `Scenes from around ${dest.name} — the landscapes, light and life this experience moves through.`
+                      : `Scenes from ${dest.name} and similar island journeys — the landscapes, light and life this kind of experience moves through.`}
                   </p>
                 </Reveal>
                 <div className="grid grid-cols-2 sm:grid-cols-4 auto-rows-[160px] sm:auto-rows-[180px] gap-4 mt-6">
-                  {dest.gallery.map((src, i) => (
+                  {gallery.map((src, i) => (
                     <div
                       key={src}
                       className={`group relative overflow-hidden rounded-3xl shadow-sm ${
-                        i === 0
-                          ? "col-span-2 sm:row-span-2"
-                          : ""
+                        i === 0 ? "col-span-2 sm:row-span-2" : ""
                       }`}
                     >
                       <Image
                         src={src}
-                        alt={`${dest.name} photo ${i + 1}`}
+                        alt={`Sri Lanka photo ${i + 1}`}
                         fill
                         className="object-cover transition-transform duration-700 group-hover:scale-105"
                         sizes="(max-width: 640px) 50vw, 25vw"
