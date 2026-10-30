@@ -49,6 +49,7 @@ type FormState = {
 export default function Builder() {
   const { formatUSD, currency, preferredLang } = useSite();
   const [tier, setTier] = useState<TierId>("gold");
+  const [tierPopup, setTierPopup] = useState<TierInfo | null>(null);
   const [days, setDays] = useState(7);
   const [destSlugs, setDestSlugs] = useState<string[]>([]);
   const [activities, setActivities] = useState<Record<string, string[]>>({});
@@ -76,6 +77,21 @@ export default function Builder() {
     window.addEventListener("ariva:vibe", handler);
     return () => window.removeEventListener("ariva:vibe", handler);
   }, []);
+
+  // Tier popup: Escape closes it, and the page behind it stops scrolling.
+  useEffect(() => {
+    if (!tierPopup) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setTierPopup(null);
+    };
+    window.addEventListener("keydown", onKey);
+    const prevOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    return () => {
+      window.removeEventListener("keydown", onKey);
+      document.body.style.overflow = prevOverflow;
+    };
+  }, [tierPopup]);
 
   const toggleDestination = (slug: string) => {
     const isSelected = destSlugs.includes(slug);
@@ -185,16 +201,23 @@ export default function Builder() {
                   return (
                     <button
                       key={t.id}
-                      onClick={() => setTier(t.id as TierId)}
+                      onClick={() => {
+                        setTier(t.id as TierId);
+                        setTierPopup(t);
+                      }}
                       className={`rounded-2xl border p-5 text-left transition ${
                         selected
                           ? "border-gold bg-white ring-2 ring-gold"
                           : "border-ink/15 bg-white/60 hover:border-gold/60"
                       }`}
                       aria-pressed={selected}
+                      aria-haspopup="dialog"
                     >
                       <p className="font-display text-xl text-ink">{t.name}</p>
                       <p className="mt-1 text-sm text-ink/60">{t.tagline}</p>
+                      <p className="mt-3 text-sm font-medium text-gold">
+                        What&apos;s included? Tap to see →
+                      </p>
                     </button>
                   );
                 })}
@@ -450,6 +473,100 @@ export default function Builder() {
           </Reveal>
         </div>
       </div>
+      {tierPopup && (
+        <TierPopup tier={tierPopup} onClose={() => setTierPopup(null)} />
+      )}
     </section>
+  );
+}
+
+function TierPopup({
+  tier,
+  onClose,
+}: {
+  tier: TierInfo;
+  onClose: () => void;
+}) {
+  const rows: { label: string; text: string }[] = [
+    { label: "Dining", text: tier.lunch },
+    { label: "Transport", text: tier.transport },
+    { label: "Guide", text: tier.guide },
+    { label: "Stay", text: tier.accommodation },
+  ];
+  return (
+    <div
+      className="animate-popup-fade fixed inset-0 z-[80] flex items-end justify-center bg-ink/60 p-4 backdrop-blur-sm sm:items-center"
+      role="dialog"
+      aria-modal="true"
+      aria-label={`${tier.name} tier — what's included`}
+      onClick={onClose}
+    >
+      <div
+        className="animate-popup-in max-h-[85vh] w-full max-w-lg overflow-y-auto rounded-3xl border border-gold/40 bg-white p-6 shadow-2xl sm:p-8"
+        onClick={(e) => e.stopPropagation()}
+      >
+        <div className="flex items-start justify-between gap-4">
+          <div>
+            <p className="text-xs font-semibold tracking-widest text-gold uppercase">
+              {tier.name} tier
+            </p>
+            <h3 className="mt-1 font-display text-3xl text-ink">
+              What&apos;s included
+            </h3>
+            <p className="mt-1 text-sm text-ink/60">{tier.tagline}</p>
+          </div>
+          <button
+            onClick={onClose}
+            aria-label="Close"
+            className="shrink-0 rounded-full border border-ink/15 px-3 py-1.5 text-lg leading-none text-ink/70 transition hover:border-gold hover:text-ink"
+          >
+            ×
+          </button>
+        </div>
+
+        <ul className="mt-6 space-y-2.5">
+          {tier.highlights.map((h) => (
+            <li key={h} className="flex items-start gap-2.5 text-[15px] text-ink">
+              <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-gold/15 text-xs font-bold text-gold">
+                ✓
+              </span>
+              {h}
+            </li>
+          ))}
+        </ul>
+
+        <dl className="mt-6 space-y-4 border-t border-ink/10 pt-5">
+          {rows.map((r) => (
+            <div key={r.label}>
+              <dt className="text-xs font-semibold tracking-widest text-ink/50 uppercase">
+                {r.label}
+              </dt>
+              <dd className="mt-1 text-sm leading-relaxed text-ink/80">
+                {r.text}
+              </dd>
+            </div>
+          ))}
+          <div>
+            <dt className="text-xs font-semibold tracking-widest text-ink/50 uppercase">
+              Hotels
+            </dt>
+            <dd className="mt-1 text-sm leading-relaxed text-ink/80">
+              {tier.hotelChoiceNote}
+            </dd>
+          </div>
+        </dl>
+
+        <p className="mt-5 rounded-xl bg-cream/60 p-4 text-sm leading-relaxed text-ink/70">
+          Best for: {tier.idealFor}
+        </p>
+
+        <button
+          onClick={onClose}
+          className="mt-6 w-full rounded-xl bg-gold px-6 py-3.5 font-medium text-ink transition hover:brightness-110"
+        >
+          Continue with {tier.name}
+        </button>
+      </div>
+    </div>
   );
 }
