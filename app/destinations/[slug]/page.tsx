@@ -8,6 +8,12 @@ import Reveal from "../../../components/Reveal";
 
 const content = raw as unknown as SiteContent;
 
+const slugify = (s: string) =>
+  s
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-+|-+$/g, "");
+
 const vibeNames = new Map(content.vibes.map((v) => [v.id, v.name]));
 
 export async function generateStaticParams() {
@@ -109,7 +115,8 @@ export default async function DestinationPage({
               {dest.activities.map((a, i) => (
                 <Reveal key={a.name} delay={(i % 2) * 90}>
                 <article
-                  className="lift bg-sand rounded-2xl border border-ink/10 p-5 h-full"
+                  id={`activity-${slugify(a.name)}`}
+                  className="lift bg-sand rounded-2xl border border-ink/10 p-5 h-full scroll-mt-24"
                 >
                   <h3 className="font-semibold text-ink">{a.name}</h3>
                   <p className="text-sm text-ink/60 leading-relaxed mt-2">

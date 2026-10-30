@@ -1,10 +1,12 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { useEffect, useMemo, useState } from "react";
 import raw from "../data/content.json";
 import type {
   Activity,
+  Destination,
   SiteContent,
   TierInfo,
   Vibe,
@@ -14,6 +16,12 @@ import { estimateTotal, type TierId } from "../lib/pricing";
 import Reveal from "./Reveal";
 
 const content = raw as unknown as SiteContent;
+
+const slugify = (s: string) =>
+  s
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-+|-+$/g, "");
 
 const sortedDestinations = [...content.destinations].sort(
   (a, b) => a.order - b.order
@@ -50,6 +58,10 @@ export default function Builder() {
   const { formatUSD, currency, preferredLang } = useSite();
   const [tier, setTier] = useState<TierId>("gold");
   const [tierPopup, setTierPopup] = useState<TierInfo | null>(null);
+  const [lastActivity, setLastActivity] = useState<{
+    slug: string;
+    name: string;
+  } | null>(null);
   const [days, setDays] = useState(7);
   const [destSlugs, setDestSlugs] = useState<string[]>([]);
   const [activities, setActivities] = useState<Record<string, string[]>>({});
@@ -104,10 +116,12 @@ export default function Builder() {
         delete next[slug];
         return next;
       });
+      setLastActivity((prev) => (prev?.slug === slug ? null : prev));
     }
   };
 
   const toggleActivity = (slug: string, name: string) => {
+    const isSelecting = !(activities[slug] ?? []).includes(name);
     setActivities((prev) => {
       const current = prev[slug] ?? [];
       const next = current.includes(name)
@@ -115,6 +129,13 @@ export default function Builder() {
         : [...current, name];
       return { ...prev, [slug]: next };
     });
+    setLastActivity((prev) =>
+      isSelecting
+        ? { slug, name }
+        : prev?.slug === slug && prev?.name === name
+          ? null
+          : prev
+    );
   };
 
   const selectedDests = useMemo(
@@ -252,35 +273,53 @@ export default function Builder() {
               <StepHeading
                 n={3}
                 title="Where do you want to go?"
-                hint="Tap to select — you can pick as many as you like."
+                hint="Tap a place to select it — Explore opens its full page with activities, photos and hotels."
               />
               <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4">
                 {sortedDestinations.map((d) => {
                   const selected = destSlugs.includes(d.slug);
                   return (
-                    <button
+                    <div
                       key={d.slug}
-                      onClick={() => toggleDestination(d.slug)}
-                      className={`overflow-hidden rounded-2xl border bg-white text-left transition ${
+                      className={`overflow-hidden rounded-2xl border bg-white transition ${
                         selected
                           ? "border-gold ring-2 ring-gold"
                           : "border-ink/10 hover:border-gold/50"
                       }`}
-                      aria-pressed={selected}
                     >
-                      <div className="relative h-24">
-                        <Image
-                          src={d.image}
-                          alt={d.name}
-                          fill
-                          className="object-cover"
-                          sizes="(max-width: 640px) 50vw, 25vw"
-                        />
-                      </div>
-                      <p className="px-3 py-2.5 text-sm font-medium text-ink">
-                        {d.name}
-                      </p>
-                    </button>
+                      <button
+                        onClick={() => toggleDestination(d.slug)}
+                        className="block w-full text-left"
+                        aria-pressed={selected}
+                      >
+                        <div className="relative h-24">
+                          <Image
+                            src={d.image}
+                            alt={d.name}
+                            fill
+                            className="object-cover"
+                            sizes="(max-width: 640px) 50vw, 25vw"
+                          />
+                          {selected && (
+                            <span className="absolute top-2 right-2 flex h-6 w-6 items-center justify-center rounded-full bg-gold text-sm font-bold text-ink">
+                              ✓
+                            </span>
+                          )}
+                        </div>
+                        <p className="px-3 pt-2.5 text-sm font-medium text-ink">
+                          {d.name}
+                        </p>
+                      </button>
+                      <Link
+                        href={`/destinations/${d.slug}`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="mx-3 mt-1 mb-2.5 inline-block text-sm font-medium text-gold hover:underline"
+                        aria-label={`Explore ${d.name} — opens its full page in a new tab`}
+                      >
+                        Explore →
+                      </Link>
+                    </div>
                   );
                 })}
               </div>
@@ -293,7 +332,7 @@ export default function Builder() {
               <StepHeading
                 n={4}
                 title="What do you want to do?"
-                hint="Pick activities in each of your destinations."
+                hint="Pick activities in each of your destinations — select one to see its details."
               />
               {selectedDests.length === 0 ? (
                 <p className="rounded-2xl border border-dashed border-ink/20 bg-white/50 p-6 text-sm text-ink/60">
@@ -327,6 +366,7 @@ export default function Builder() {
                           );
                         })}
                       </div>
+                      <ActivityDetail dest={d} last={lastActivity} />
                     </div>
                   ))}
                   {suggestions.length > 0 && (
@@ -477,6 +517,35 @@ export default function Builder() {
         <TierPopup tier={tierPopup} onClose={() => setTierPopup(null)} />
       )}
     </section>
+  );
+}
+
+function ActivityDetail({
+  dest,
+  last,
+}: {
+  dest: Destination;
+  last: { slug: string; name: string } | null;
+}) {
+  if (!last || last.slug !== dest.slug) return null;
+  const act = dest.activities.find((a) => a.name === last.name);
+  if (!act) return null;
+  return (
+    <div className="mt-3 rounded-2xl border border-gold/40 bg-white p-4">
+      <p className="font-medium text-ink">{act.name}</p>
+      <p className="mt-1 text-sm leading-relaxed text-ink/70">
+        {act.description}
+      </p>
+      <Link
+        href={`/destinations/${dest.slug}#activity-${slugify(act.name)}`}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="mt-2 inline-block text-sm font-medium text-gold hover:underline"
+        aria-label={`More information about ${act.name} — opens its destination page in a new tab`}
+      >
+        More information →
+      </Link>
+    </div>
   );
 }
 
