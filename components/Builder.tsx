@@ -537,11 +537,11 @@ function ActivityDetail({
         {act.description}
       </p>
       <Link
-        href={`/destinations/${dest.slug}#activity-${slugify(act.name)}`}
+        href={`/destinations/${dest.slug}/experiences/${slugify(act.name)}`}
         target="_blank"
         rel="noopener noreferrer"
         className="mt-2 inline-block text-sm font-medium text-gold hover:underline"
-        aria-label={`More information about ${act.name} — opens its destination page in a new tab`}
+        aria-label={`More information about ${act.name} — opens its experience page in a new tab`}
       >
         More information →
       </Link>
