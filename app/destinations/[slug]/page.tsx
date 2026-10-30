@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import raw from "../../../data/content.json";
@@ -114,9 +115,12 @@ export default async function DestinationPage({
             <div className="grid sm:grid-cols-2 gap-5 mt-6">
               {dest.activities.map((a, i) => (
                 <Reveal key={a.name} delay={(i % 2) * 90}>
+                <Link
+                  href={`/destinations/${dest.slug}/experiences/${slugify(a.name)}`}
+                >
                 <article
                   id={`activity-${slugify(a.name)}`}
-                  className="lift bg-sand rounded-2xl border border-ink/10 p-5 h-full scroll-mt-24"
+                  className="lift bg-sand rounded-2xl border border-ink/10 p-5 h-full scroll-mt-24 cursor-pointer"
                 >
                   <h3 className="font-semibold text-ink">{a.name}</h3>
                   <p className="text-sm text-ink/60 leading-relaxed mt-2">
@@ -132,7 +136,11 @@ export default async function DestinationPage({
                       </span>
                     ))}
                   </div>
+                  <p className="mt-4 text-sm font-medium text-gold">
+                    View details →
+                  </p>
                 </article>
+                </Link>
                 </Reveal>
               ))}
             </div>
